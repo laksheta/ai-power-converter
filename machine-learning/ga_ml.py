@@ -172,6 +172,28 @@ import numpy as np
 #     return mutated_offspring
 
 
+# def mutation(offspring_crossover, mutation_ranges, num_mutations=1):
+#     mutated_offspring = np.copy(offspring_crossover)
+#     num_genes = mutated_offspring.shape[1]
+    
+#     # Mutation for N (number of neurons)
+#     for idx in range(mutated_offspring.shape[0]):  # Iterate over each individual in the population
+#         # Mutation for N: randomly select a value from the provided range
+#         mutated_N = np.random.choice(mutation_ranges[0])
+#         mutated_offspring[idx, 0] = mutated_N
+    
+#     # Mutation for H (number of layers)
+#     for idx in range(mutated_offspring.shape[0]):  # Iterate over each individual in the population
+#         # Mutation for H: randomly increment or decrement H by 1
+#         mutation_value_H = np.random.choice([-1, 1])
+#         mutated_H = mutated_offspring[idx, 1] + mutation_value_H
+        
+#         # Ensure the mutated value of H remains within the provided range
+#         mutated_H = np.clip(mutated_H, min(mutation_ranges[1]), max(mutation_ranges[1]))
+#         mutated_offspring[idx, 1] = mutated_H
+    
+#     return mutated_offspring
+
 def mutation(offspring_crossover, mutation_ranges, num_mutations=1):
     mutated_offspring = np.copy(offspring_crossover)
     num_genes = mutated_offspring.shape[1]
@@ -193,4 +215,5 @@ def mutation(offspring_crossover, mutation_ranges, num_mutations=1):
         mutated_offspring[idx, 1] = mutated_H
     
     return mutated_offspring
+
 
