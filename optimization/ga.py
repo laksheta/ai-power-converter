@@ -83,34 +83,46 @@ def mutation(offspring_crossover, mutation_ranges, L_range, C_range, fsw_range, 
     return mutated_offspring
 
 # def mutation(offspring_crossover, mutation_ranges, L_range, C_range, fsw_range, num_mutations=1):
-#     mutated_offspring = np.copy(offspring_crossover)
+#     mutated_offspring = numpy.copy(offspring_crossover)
 #     num_genes = mutated_offspring.shape[1]
     
 #     # Mutation changes a number of genes as defined by the num_mutations argument.
 #     # The changes are random.
 #     for idx in range(mutated_offspring.shape[0]):  # Iterate over each individual in the population
 #         for _ in range(num_mutations):  # Perform the specified number of mutations for each individual
-#             for gene_idx in range(num_genes):  # Iterate over each gene in the individual
-#                 # Obtain the mutation range for the current gene
-#                 mutation_range = mutation_ranges[gene_idx]
+#             # Initialize a flag to track if the mutated offspring meet the constraint
+#             constraints_satisfied = False
+#             while not constraints_satisfied:  # Continue generating mutations until the constraint is satisfied
+#                 for gene_idx in range(num_genes):  # Iterate over each gene in the individual
+#                     # Determine whether to add or subtract the mutation value randomly
+#                     add_or_subtract = numpy.random.choice([-1, 1])
+                    
+#                     # Obtain the mutation range for the current gene
+#                     mutation_range = mutation_ranges[gene_idx]
+                    
+#                     if gene_idx == len(mutation_ranges) - 1:  # Check if the gene is for fsw
+#                         # For fsw, directly generate a random integer within the specified range
+#                         mutation_value = add_or_subtract * numpy.random.randint(mutation_range[0], mutation_range[1] + 1)
+#                     else:
+#                         # For L and C, scale the mutation range to match the integer range
+#                         upper_bound = int(mutation_range[1] * 1e6)  # Scale to match the integer range
+#                         mutation_value = add_or_subtract * numpy.random.randint(1, upper_bound + 1)
+#                         mutation_value /= 1e6  # Scale back to the original range if necessary
+                    
+#                     # Apply mutation to the gene
+#                     mutated_offspring[idx, gene_idx] += mutation_value
+                    
+#                     # Ensure the mutated value remains within the specified range
+#                     if gene_idx == 0:  # L gene
+#                         mutated_offspring[idx, gene_idx] = np.clip(mutated_offspring[idx, gene_idx], L_range[0], L_range[1])
+#                     elif gene_idx == 1:  # C gene
+#                         mutated_offspring[idx, gene_idx] = np.clip(mutated_offspring[idx, gene_idx], C_range[0], C_range[1])
+#                     else:  # fsw gene
+#                         mutated_offspring[idx, gene_idx] = np.clip(mutated_offspring[idx, gene_idx], fsw_range[0], fsw_range[1])
                 
-#                 if gene_idx == len(mutation_ranges) - 1:  # Check if the gene is for fsw
-#                     # For fsw, directly generate a random integer within the specified range
-#                     mutation_value = np.random.randint(mutation_range[0], mutation_range[1] + 1)
-#                 else:
-#                     # For L and C, generate a mutation value within the specified range
-#                     mutation_value = np.random.uniform(-mutation_range[0], mutation_range[1])
-                
-#                 # Apply mutation to the gene
-#                 mutated_offspring[idx, gene_idx] += mutation_value
-                
-#                 # Ensure the mutated value remains within the specified range
-#                 if gene_idx == 0:  # L gene
-#                     mutated_offspring[idx, gene_idx] = np.clip(mutated_offspring[idx, gene_idx], L_range[0], L_range[1])
-#                 elif gene_idx == 1:  # C gene
-#                     mutated_offspring[idx, gene_idx] = np.clip(mutated_offspring[idx, gene_idx], C_range[0], C_range[1])
-#                 else:  # fsw gene
-#                     mutated_offspring[idx, gene_idx] = np.clip(mutated_offspring[idx, gene_idx], fsw_range[0], fsw_range[1])
+#                 # Check if the mutated offspring meet the constraint
+#                 constraints_satisfied = check_constraints(mutated_offspring[idx])
     
 #     return mutated_offspring
+
 
