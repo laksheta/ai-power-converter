@@ -60,8 +60,8 @@ Plecs {
     Index         "1"
   }
   Schematic {
-    Location      [684, 31; 1365, 680]
-    ZoomFactor    1.30957
+    Location      [0, 23; 1920, 990]
+    ZoomFactor    1.71498
     SliderPosition [0, 0]
     ShowBrowser   off
     BrowserWidth  100
@@ -89,7 +89,7 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "L"
-        Value         "0.002"
+        Value         "3e-05"
         Show          on
       }
       Parameter {
@@ -284,7 +284,7 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "R"
-        Value         "0.443394"
+        Value         "0.079576"
         Show          off
       }
     }
@@ -298,7 +298,7 @@ Plecs {
       LabelPosition east
       Parameter {
         Variable      "R"
-        Value         "0.0005570423008216338"
+        Value         "0.03713615338810892"
         Show          off
       }
     }
@@ -328,7 +328,7 @@ Plecs {
       }
       Parameter {
         Variable      "fc"
-        Value         "200000"
+        Value         "20000"
         Show          off
       }
       Parameter {
@@ -380,7 +380,7 @@ Plecs {
         Variable      "td"
         Prompt        "Deadtime (s)"
         Type          FreeText
-        Value         "1.78e-07"
+        Value         "1e-6"
         Show          off
         Tunable       off
         TabName       ""
@@ -942,7 +942,7 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "C"
-        Value         "0.0002"
+        Value         "3e-05"
         Show          on
       }
       Parameter {
@@ -961,13 +961,96 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "L"
-        Value         "2.1945e-07"
+        Value         "1.463e-06"
         Show          off
       }
       Parameter {
         Variable      "i_init"
         Value         "0"
         Show          off
+      }
+    }
+    Component {
+      Type          Scope
+      Name          "Scope1"
+      Show          on
+      Position      [270, 170]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Location      [0, 23; 1920, 1012]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAAFkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAAAAAAAAPw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAB4AAAAO+AAAA"
+"BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
+"AAAAA=="
+      SavedViews    "AAAAAgAAAAA="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"wAAAGQAAAACAAAAZAAAAAEAAABkAAAABwAAAGQAAAAGAAAAZAAAAAUAAABkAAAABAAAAGQAAAAJAA"
+"AAZAAAAAgAAABkAAAA1QAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAC1AAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AAgAAAAAQAAAAAAAAPoAAAAACA="
+      PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
+"AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+      Axes          "2"
+      TimeRange     "0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "0"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Time / s"
+      ShowLegend    "1"
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          ""
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis       on
+        AxisLabel         "Frequency / Hz"
+        Scaling           0
+        PhaseDisplay      0
+        ShowFourierLegend off
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
       }
     }
     Connection {
@@ -1141,20 +1224,6 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "Compare to\nConstant2"
-      SrcTerminal   2
-      DstComponent  "FETD1"
-      DstTerminal   3
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Compare to\nConstant1"
-      SrcTerminal   2
-      DstComponent  "FETD2"
-      DstTerminal   3
-    }
-    Connection {
-      Type          Signal
       SrcComponent  "Symmetrical PWM1"
       SrcTerminal   1
       DstComponent  "Deadtime"
@@ -1211,6 +1280,36 @@ Plecs {
       SrcTerminal   2
       DstComponent  "C"
       DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Compare to\nConstant1"
+      SrcTerminal   2
+      Points        [160, 160]
+      Branch {
+        DstComponent  "FETD2"
+        DstTerminal   3
+      }
+      Branch {
+        Points        [160, 165]
+        DstComponent  "Scope1"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Compare to\nConstant2"
+      SrcTerminal   2
+      Points        [160, 80]
+      Branch {
+        DstComponent  "FETD1"
+        DstTerminal   3
+      }
+      Branch {
+        Points        [160, 175]
+        DstComponent  "Scope1"
+        DstTerminal   2
+      }
     }
     Annotation {
       Name          "<html><body>\n<p align=\"center\">Synchronous buck conver"
