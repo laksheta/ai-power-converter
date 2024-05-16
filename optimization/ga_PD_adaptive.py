@@ -18,24 +18,93 @@ def select_mating_pool(pop, fitness, num_parents):
 
 import numpy as np
 
-def crossover(parents, offspring_size):
-    offspring = numpy.empty(offspring_size)
-    # The point at which crossover takes place between two parents. Usually, it is at the center.
-    crossover_point = numpy.uint8(offspring_size[1]/2)
-    # print("crossover point", crossover_point)
+def adapt_crossover_point_for_stagnation(crossover_point):
+    # Modify crossover point for adaptive crossover during stagnation
+    # Example: Increment the crossover point by a fixed amount
+    return crossover_point + 1
 
+
+# def detect_stagnation(best_fitnesses, stagnation_threshold=3):
+#     if len(best_fitnesses) < stagnation_threshold:
+#         return False
+    
+#     # Check if best fitness values have remained unchanged for stagnation_threshold generations
+#     for i in range(len(best_fitnesses) - stagnation_threshold, len(best_fitnesses) - 1):
+#         if best_fitnesses[i] != best_fitnesses[i+1]:
+#             return False
+    
+#     return True
+
+# def calculate_crossover_point(parents):
+#     # Calculate crossover point based on some heuristic or default value
+#     return int(parents.shape[1] / 2)
+
+# def adaptive_crossover(parents, offspring_size,best_fitnesses):
+#     offspring = np.empty(offspring_size)
+#     crossover_point = calculate_crossover_point(parents)
+    
+#     # Check if stagnation is detected and adapt crossover accordingly
+#     if detect_stagnation(best_fitnesses):
+#         # Apply adaptive crossover strategy
+#         crossover_point = adapt_crossover_point_for_stagnation(crossover_point)
+    
+#     for k in range(offspring_size[0]):
+#         parent1_idx = k % parents.shape[0]
+#         parent2_idx = (k + 1) % parents.shape[0]
+#         offspring[k, 0:crossover_point] = parents[parent1_idx, 0:crossover_point]
+#         offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
+    
+#     return offspring
+
+
+
+# def crossover(parents, offspring_size):
+#     offspring = numpy.empty(offspring_size)
+#     # The point at which crossover takes place between two parents. Usually, it is at the center.
+#     crossover_point = numpy.uint8(offspring_size[1]/2)
+
+#     for k in range(offspring_size[0]):
+#         # Index of the first parent to mate.
+#         parent1_idx = k%parents.shape[0]
+#         # Index of the second parent to mate.
+#         parent2_idx = (k+1)%parents.shape[0]
+#         # The new offspring will have its first half of its genes taken from the first parent.
+#         offspring[k, 0:crossover_point] = parents[parent1_idx, 0:crossover_point]
+#         # The new offspring will have its second half of its genes taken from the second parent.
+#         offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
+#     return offspring
+
+def detect_stagnation(best_fitnesses, stagnation_threshold=3):
+    if len(best_fitnesses) < stagnation_threshold:
+        return False
+    
+    # Check if best fitness values have remained unchanged for stagnation_threshold generations
+    return all(best_fitnesses[i] == best_fitnesses[i+1] for i in range(len(best_fitnesses) - stagnation_threshold, len(best_fitnesses) - 1))
+
+
+def crossover(parents, offspring_size, best_fitnesses, stagnation_threshold=3):
+    offspring = np.empty(offspring_size)
+    
+    stagnation = detect_stagnation(best_fitnesses, stagnation_threshold)
+    
+    if stagnation:
+        # Randomly select crossover point between 1 and 3
+        crossover_point = np.random.randint(1, offspring_size[1])
+    else:
+        # Use default crossover point (halfway)
+        crossover_point = offspring_size[1] // 2
+
+    print("Crossover point:", crossover_point)
+    
     for k in range(offspring_size[0]):
-        # Index of the first parent to mate.
-        parent1_idx = k%parents.shape[0]
-        # Index of the second parent to mate.
-        parent2_idx = (k+1)%parents.shape[0]
-        # The new offspring will have its first half of its genes taken from the first parent.
+        parent1_idx = k % parents.shape[0]
+        parent2_idx = (k + 1) % parents.shape[0]
         offspring[k, 0:crossover_point] = parents[parent1_idx, 0:crossover_point]
-        # The new offspring will have its second half of its genes taken from the second parent.
         offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
+    
     return offspring
 
-import numpy as np
+
 
 def mutation(offspring_crossover, mutation_ranges, L_range, C_range, fsw_range, t_dt_range, num_mutations=1):
     mutated_offspring = np.copy(offspring_crossover)
