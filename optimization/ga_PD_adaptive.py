@@ -18,10 +18,10 @@ def select_mating_pool(pop, fitness, num_parents):
 
 import numpy as np
 
-def adapt_crossover_point_for_stagnation(crossover_point):
-    # Modify crossover point for adaptive crossover during stagnation
-    # Example: Increment the crossover point by a fixed amount
-    return crossover_point + 1
+# def adapt_crossover_point_for_stagnation(crossover_point):
+#     # Modify crossover point for adaptive crossover during stagnation
+#     # Example: Increment the crossover point by a fixed amount
+#     return crossover_point + 1
 
 
 # def detect_stagnation(best_fitnesses, stagnation_threshold=3):
@@ -58,21 +58,21 @@ def adapt_crossover_point_for_stagnation(crossover_point):
 
 
 
-# def crossover(parents, offspring_size):
-#     offspring = numpy.empty(offspring_size)
-#     # The point at which crossover takes place between two parents. Usually, it is at the center.
-#     crossover_point = numpy.uint8(offspring_size[1]/2)
+def crossover(parents, offspring_size, best_fitnesses, stagnation_threshold=3):
+    offspring = numpy.empty(offspring_size)
+    # The point at which crossover takes place between two parents. Usually, it is at the center.
+    crossover_point = numpy.uint8(offspring_size[1]/2)
 
-#     for k in range(offspring_size[0]):
-#         # Index of the first parent to mate.
-#         parent1_idx = k%parents.shape[0]
-#         # Index of the second parent to mate.
-#         parent2_idx = (k+1)%parents.shape[0]
-#         # The new offspring will have its first half of its genes taken from the first parent.
-#         offspring[k, 0:crossover_point] = parents[parent1_idx, 0:crossover_point]
-#         # The new offspring will have its second half of its genes taken from the second parent.
-#         offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
-#     return offspring
+    for k in range(offspring_size[0]):
+        # Index of the first parent to mate.
+        parent1_idx = k%parents.shape[0]
+        # Index of the second parent to mate.
+        parent2_idx = (k+1)%parents.shape[0]
+        # The new offspring will have its first half of its genes taken from the first parent.
+        offspring[k, 0:crossover_point] = parents[parent1_idx, 0:crossover_point]
+        # The new offspring will have its second half of its genes taken from the second parent.
+        offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
+    return offspring
 
 def detect_stagnation(best_fitnesses, stagnation_threshold=3):
     if len(best_fitnesses) < stagnation_threshold:
@@ -82,17 +82,24 @@ def detect_stagnation(best_fitnesses, stagnation_threshold=3):
     return all(best_fitnesses[i] == best_fitnesses[i+1] for i in range(len(best_fitnesses) - stagnation_threshold, len(best_fitnesses) - 1))
 
 
-def crossover(parents, offspring_size, best_fitnesses, stagnation_threshold=3):
+def crossover_adaptive(parents, offspring_size, best_fitnesses, stagnation_threshold=3):
     offspring = np.empty(offspring_size)
-    
+    last_crossover_point = None  # Initialize the last crossover point
+
     stagnation = detect_stagnation(best_fitnesses, stagnation_threshold)
     
     if stagnation:
-        # Randomly select crossover point between 1 and 3
-        crossover_point = np.random.randint(1, offspring_size[1])
+        while True:
+            # Randomly select crossover point between 1 and offspring_size[1] - 1
+            crossover_point = np.random.randint(1, offspring_size[1])
+            # Ensure the new crossover point is different from the last one
+            if crossover_point != last_crossover_point:
+                break
     else:
         # Use default crossover point (halfway)
         crossover_point = offspring_size[1] // 2
+
+    last_crossover_point = crossover_point
 
     print("Crossover point:", crossover_point)
     
