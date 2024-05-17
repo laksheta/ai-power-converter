@@ -58,7 +58,7 @@ import numpy as np
 
 
 
-def crossover(parents, offspring_size, best_fitnesses, stagnation_threshold=3):
+def crossover(parents, offspring_size):
     offspring = numpy.empty(offspring_size)
     # The point at which crossover takes place between two parents. Usually, it is at the center.
     crossover_point = numpy.uint8(offspring_size[1]/2)
