@@ -74,6 +74,53 @@ def crossover(parents, offspring_size):
         offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
     return offspring
 
+# def crossover_inner_ga(parents, offspring_size):
+#     offspring = numpy.empty(offspring_size)
+#     # The point at which crossover takes place between two parents. Usually, it is at the center.
+#     # crossover_point = numpy.uint8(offspring_size[1]/2)
+#     crossover_point = np.random.randint(1, offspring_size[1])
+
+#     for k in range(offspring_size[0]):
+#         # Index of the first parent to mate.
+#         parent1_idx = k%parents.shape[0]
+#         # Index of the second parent to mate.
+#         parent2_idx = (k+1)%parents.shape[0]
+#         # The new offspring will have its first half of its genes taken from the first parent.
+#         offspring[k, 0:crossover_point] = parents[parent1_idx, 0:crossover_point]
+#         # The new offspring will have its second half of its genes taken from the second parent.
+#         offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
+#     return offspring
+
+def crossover_inner_ga(parents, offspring_size):
+    offspring = np.empty(offspring_size)
+    
+    # Ensure each crossover_point is different in successive function calls
+    previous_crossover_point = None
+
+    for k in range(offspring_size[0]):
+        # Generate a crossover point from 1 to 3 that is different from the previous one
+        while True:
+            crossover_point = np.random.randint(1, offspring_size[1])
+            print("Crossover point", crossover_point)
+            if crossover_point != previous_crossover_point:
+                previous_crossover_point = crossover_point
+                break
+        
+        # Print the crossover point for debugging purposes (optional)
+        print(f"Offspring {k}: Crossover point is {crossover_point}")
+
+        # Index of the first parent to mate.
+        parent1_idx = k % parents.shape[0]
+        # Index of the second parent to mate.
+        parent2_idx = (k + 1) % parents.shape[0]
+        # The new offspring will have its first half of its genes taken from the first parent.
+        offspring[k, 0:crossover_point] = parents[parent1_idx, 0:crossover_point]
+        # The new offspring will have its second half of its genes taken from the second parent.
+        offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
+        
+    return offspring
+
+
 def detect_stagnation(best_fitnesses, stagnation_threshold=3):
     if len(best_fitnesses) < stagnation_threshold:
         return False
