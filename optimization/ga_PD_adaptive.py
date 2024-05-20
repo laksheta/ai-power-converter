@@ -74,37 +74,11 @@ def crossover(parents, offspring_size):
         offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
     return offspring
 
-def crossover_inner_ga_1(parents, offspring_size):
-    offspring = numpy.empty(offspring_size)
-    # The point at which crossover takes place between two parents. Usually, it is at the center.
-    crossover_point = numpy.uint8(offspring_size[1]/2)
-    # crossover_point = np.random.randint(1, offspring_size[1])
 
-    for k in range(offspring_size[0]):
-        # Index of the first parent to mate.
-        parent1_idx = k%parents.shape[0]
-        # Index of the second parent to mate.
-        parent2_idx = (k+1)%parents.shape[0]
-        # The new offspring will have its first half of its genes taken from the first parent.
-        offspring[k, 0:crossover_point] = parents[parent1_idx, 0:crossover_point]
-        # The new offspring will have its second half of its genes taken from the second parent.
-        offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
-    return offspring
-
-def crossover_inner_ga_2(parents, offspring_size):
+def crossover_inner(parents, offspring_size, crossover_point):
     offspring = np.empty(offspring_size)
     
-    # Ensure each crossover_point is different in successive function calls
-    previous_crossover_point = None
-
     for k in range(offspring_size[0]):
-        # Generate a crossover point from 1 to 3 that is different from the previous one
-        while True:
-            crossover_point = np.random.randint(1, offspring_size[1])
-            if crossover_point != previous_crossover_point:
-                previous_crossover_point = crossover_point
-                break
-        
         # Print the crossover point for debugging purposes (optional)
         print(f"Offspring {k}: Crossover point is {crossover_point}")
 
@@ -118,6 +92,7 @@ def crossover_inner_ga_2(parents, offspring_size):
         offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
         
     return offspring
+
 
 
 def detect_stagnation(best_fitnesses, stagnation_threshold=3):
@@ -204,6 +179,61 @@ def mutation(offspring_crossover, mutation_ranges, L_range, C_range, fsw_range, 
                     mutated_offspring[idx, gene_idx] = np.clip(mutated_offspring[idx, gene_idx], fsw_range[0], fsw_range[1])
                 else:  # t_dt gene
                     mutated_offspring[idx, gene_idx] = np.clip(mutated_offspring[idx, gene_idx], t_dt_range[0], t_dt_range[1])
+    
+    return mutated_offspring
+
+def mutation_inner(offspring_crossover, mutation_ranges, L_range, C_range, fsw_range, t_dt_range, num_mutations=1):
+    mutated_offspring = np.copy(offspring_crossover)
+    num_genes = mutated_offspring.shape[1]
+    
+    for idx in range(mutated_offspring.shape[0]):  # Iterate over each individual in the population
+        mutation_indices = np.random.choice(num_genes, num_mutations, replace=False)  # Ensure unique genes are mutated
+        
+        # print(f"\nIndividual {idx}:")
+        # print(f"  Original: {mutated_offspring[idx]}")
+        # print(f"  Mutation Indices: {mutation_indices}")
+        
+        for gene_idx in mutation_indices:  # Perform the specified number of mutations for each individual
+            # Determine whether to add or subtract the mutation value randomly
+            add_or_subtract = np.random.choice([-1, 1])
+            
+            # Obtain the mutation range for the current gene
+            mutation_range = mutation_ranges[gene_idx]
+            
+            if gene_idx == 0:  # If the gene is for L
+                upper_bound = int((L_range[1] - L_range[0]) * 1e6)
+                mutation_value = add_or_subtract * np.random.randint(1, upper_bound + 1)
+                mutation_value /= 1e6  # Scale back to the original range
+            elif gene_idx == 1:  # If the gene is for C
+                upper_bound = int((C_range[1] - C_range[0]) * 1e6)
+                mutation_value = add_or_subtract * np.random.randint(1, upper_bound + 1)
+                mutation_value /= 1e6  # Scale back to the original range
+            elif gene_idx == 2:  # If the gene is for fsw
+                mutation_value = add_or_subtract * np.random.randint(int(fsw_range[0] / 1e3), int(fsw_range[1] / 1e3) + 1) * 1e3
+            else:  # If the gene is for t_dt
+                upper_bound = int((t_dt_range[1] - t_dt_range[0]) * 1e6)
+                if upper_bound > 0:
+                    mutation_value = add_or_subtract * np.random.randint(1, upper_bound + 1)
+                    mutation_value /= 1e6  # Scale back to the original range
+                else:
+                    mutation_value = add_or_subtract * (t_dt_range[1] - t_dt_range[0]) / 10  # A small fixed value for mutation
+            
+            # print(f"    Gene {gene_idx} Mutation: {add_or_subtract} * {mutation_value} = {add_or_subtract * mutation_value}")
+            
+            # Apply mutation to the gene
+            mutated_offspring[idx, gene_idx] += mutation_value
+            
+            # Ensure the mutated value remains within the specified range
+            if gene_idx == 0:  # L gene
+                mutated_offspring[idx, gene_idx] = np.clip(mutated_offspring[idx, gene_idx], L_range[0], L_range[1])
+            elif gene_idx == 1:  # C gene
+                mutated_offspring[idx, gene_idx] = np.clip(mutated_offspring[idx, gene_idx], C_range[0], C_range[1])
+            elif gene_idx == 2:  # fsw gene
+                mutated_offspring[idx, gene_idx] = np.clip(mutated_offspring[idx, gene_idx], fsw_range[0], fsw_range[1])
+            else:  # t_dt gene
+                mutated_offspring[idx, gene_idx] = np.clip(mutated_offspring[idx, gene_idx], t_dt_range[0], t_dt_range[1])
+        
+        # print(f"  Mutated: {mutated_offspring[idx]}")
     
     return mutated_offspring
 
