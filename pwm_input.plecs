@@ -1,0 +1,440 @@
+Plecs {
+  Name          "pwm_input"
+  Version       "4.8"
+  CircuitModel  "ContStateSpace"
+  StartTime     "0.0"
+  TimeSpan      "1.0"
+  Timeout       ""
+  Solver        "auto"
+  MaxStep       "1e-3"
+  InitStep      "-1"
+  FixedStep     "1e-3"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "1e-3"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  NonIdealSwitchResistance "1"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "3"
+  DatatypeOverflowMsg "3"
+  DatatypeInheritanceConflictMsg "2"
+  ContSampleTimeConflictMsg "2"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "3"
+  AssertionAction "1"
+  FixedPointDatatypeOverride "1"
+  InitializationCommands "Ts_plant = 2e-6;\t\t\t\t\t% discretization step size"
+" of the plant in s\nTs_controller = Ts_plant\nfsw = 6.9121e+04\ntd = 0\n\n"
+  InitialState  "1"
+  SystemState   ""
+  TaskingMode   "1"
+  TaskConfigurations ""
+  CodeGenParameterInlining "2"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  RemoveUnusedStateSpaceOutputs "2"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  Schematic {
+    Location      [0, 23; 1920, 990]
+    ZoomFactor    1.71498
+    SliderPosition [0, 0]
+    ShowBrowser   off
+    BrowserWidth  100
+    Component {
+      Type          Subsystem
+      Name          "TI Controller"
+      Show          on
+      Position      [260, 115]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-35, -35; 35, 35]
+      TreatAsAtomicUnit on
+      SampleTime    "-1"
+      TaskingMode "1"
+      CodeGenEnable on
+      CodeGenSampleTime "3e-6"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "TI2837xS"
+      CodeGenTargetSettings "AAAAfwAAAAAlUU1hcDxRU3RyaW5nLFFNYXA8UVN0cmluZyxRU"
+"3RyaW5nPiA+AAAAAAEAAAAQAFQASQAyADgAMwA3AHgAUwAAAFgAAAASAHUAcwBlAEkAbgB0AE8Acw"
+"BjAAAAAgAxAAAAGAB1AG4AaQBmAGwAYQBzAGgARgBpAGwAZQAAAAAAAAAWAHQAYQBzAGsARgByAGU"
+"AcQBUAG8AbAAAAAIAMQAAABIAcwB5AHMAQwBsAGsATQBIAHoAAAAGADEAOQAwAAAAFABpAG4AcwB0"
+"AGEAbABsAEQAaQByAAAAAAAAAA4AZwBlAG4ATwBuAGwAeQAAAAIAMgAAABwAZQB4AHQATQBvAGQAZ"
+"QBTAGMAaQBQAGkAbgBzAAAADgBbADgANQAsADgANABdAAAAIgBlAHgAdABNAG8AZABlAEIAdQBmAG"
+"YAZQByAFMAaQB6AGUAAAAIADEAMAAwADAAAAASAGUAeAB0AEMAbABrAE0ASAB6AAAABAAzADAAAAA"
+"IAGMAaABpAHAAAAACADEAAAAWAGIAdQBpAGwAZABDAG8AbgBmAGkAZwAAAAIAMQAAAAoAYgBvAGEA"
+"cgBkAAAAAgAyAAAAEABWAHIAZQBmAEEAZABjAEQAAAAGADMALgAwAAAAEABWAHIAZQBmAEEAZABjA"
+"EMAAAAGADMALgAwAAAAEABWAHIAZQBmAEEAZABjAEIAAAAGADMALgAwAAAAEABWAHIAZQBmAEEAZA"
+"BjAEEAAAAGADMALgAwAAAANABVAFMARQBfAFMAVABBAFIAVABfAFQASQBNAEUAXwBJAE4AXwBJAE4"
+"ASQBUAF8ARgBDAE4AAAACADAAAABKAFUAUwBFAF8ARABBAFQAQQBfAFQAWQBQAEUAUwBfAEYATwBS"
+"AF8AVABVAE4AQQBCAEwARQBfAFAAQQBSAEEATQBFAFQARQBSAFMAAAACADEAAAAOAFQAegAzAEcAc"
+"ABpAG8AAAACADAAAAASAFQAegAzAEUAbgBhAGIAbABlAAAAAgAwAAAADgBUAHoAMgBHAHAAaQBvAA"
+"AAAgAwAAAAEgBUAHoAMgBFAG4AYQBiAGwAZQAAAAIAMAAAAA4AVAB6ADEARwBwAGkAbwAAAAIAMAA"
+"AABIAVAB6ADEARQBuAGEAYgBsAGUAAAACADAAAAAaAFQAQQBSAEcARQBUAF8ARABFAFYASQBDAEUA"
+"AAAaADAAfABDAE8ATQAxADMAfAAtADEAfAAtADEAAAAgAFMAYQBtAHAAbABlAFQAaQBtAGUAUgBlA"
+"GwAVABvAGwAAAAEADEAMAAAABQAUAB3AG0AOQBHAHAAaQBvAEUAbgAAAAIAMAAAABIAUAB3AG0AOQ"
+"BCAEcAcABpAG8AAAAEADEANwAAABIAUAB3AG0AOQBBAEcAcABpAG8AAAAEADEANgAAABQAUAB3AG0"
+"AOABHAHAAaQBvAEUAbgAAAAIAMAAAABIAUAB3AG0AOABCAEcAcABpAG8AAAAEADEANQAAABIAUAB3"
+"AG0AOABBAEcAcABpAG8AAAAEADEANAAAABQAUAB3AG0ANwBHAHAAaQBvAEUAbgAAAAIAMAAAABIAU"
+"AB3AG0ANwBCAEcAcABpAG8AAAAEADEAMwAAABIAUAB3AG0ANwBBAEcAcABpAG8AAAAEADEAMgAAAB"
+"QAUAB3AG0ANgBHAHAAaQBvAEUAbgAAAAIAMAAAABIAUAB3AG0ANgBCAEcAcABpAG8AAAAEADEAMQA"
+"AABIAUAB3AG0ANgBBAEcAcABpAG8AAAAEADEAMAAAABQAUAB3AG0ANQBHAHAAaQBvAEUAbgAAAAIA"
+"MAAAABIAUAB3AG0ANQBCAEcAcABpAG8AAAACADkAAAASAFAAdwBtADUAQQBHAHAAaQBvAAAAAgA4A"
+"AAAFABQAHcAbQA0AEcAcABpAG8ARQBuAAAAAgAwAAAAEgBQAHcAbQA0AEIARwBwAGkAbwAAAAIANw"
+"AAABIAUAB3AG0ANABBAEcAcABpAG8AAAACADYAAAAUAFAAdwBtADMARwBwAGkAbwBFAG4AAAACADA"
+"AAAASAFAAdwBtADMAQgBHAHAAaQBvAAAAAgA1AAAAEgBQAHcAbQAzAEEARwBwAGkAbwAAAAIANAAA"
+"ABQAUAB3AG0AMgBHAHAAaQBvAEUAbgAAAAIAMAAAABIAUAB3AG0AMgBCAEcAcABpAG8AAAACADMAA"
+"AASAFAAdwBtADIAQQBHAHAAaQBvAAAAAgAyAAAAFABQAHcAbQAxAEcAcABpAG8ARQBuAAAAAgAwAA"
+"AAEgBQAHcAbQAxAEIARwBwAGkAbwAAAAIAMQAAABIAUAB3AG0AMQBBAEcAcABpAG8AAAACADAAAAA"
+"WAFAAdwBtADEAMgBHAHAAaQBvAEUAbgAAAAIAMAAAABQAUAB3AG0AMQAyAEIARwBwAGkAbwAAAAQA"
+"MgAzAAAAFABQAHcAbQAxADIAQQBHAHAAaQBvAAAABAAyADIAAAAWAFAAdwBtADEAMQBHAHAAaQBvA"
+"EUAbgAAAAIAMAAAABQAUAB3AG0AMQAxAEIARwBwAGkAbwAAAAQAMgAxAAAAFABQAHcAbQAxADEAQQ"
+"BHAHAAaQBvAAAABAAyADAAAAAWAFAAdwBtADEAMABHAHAAaQBvAEUAbgAAAAIAMAAAABQAUAB3AG0"
+"AMQAwAEIARwBwAGkAbwAAAAQAMQA5AAAAFABQAHcAbQAxADAAQQBHAHAAaQBvAAAABAAxADgAAAAi"
+"AEwAaQBuAGsAZQByAEMAbwBtAG0AYQBuAGQARgBpAGwAZQAAAAAAAAAaAEUAWABUAEUAUgBOAEEAT"
+"ABfAE0ATwBEAEUAAAACADEAAAAmAEEAbgBUAHIAaQBwADQAVABoAHIAZQBzAGgAbwBsAGQATABvAH"
+"cAAAACADAAAAAoAEEAbgBUAHIAaQBwADQAVABoAHIAZQBzAGgAbwBsAGQASABpAGcAaAAAAAIAMAA"
+"AABoAQQBuAFQAcgBpAHAANABTAGkAZwBuAGEAbAAAAAIAMQAAABoAQQBuAFQAcgBpAHAANABFAG4A"
+"YQBiAGwAZQAAAAIAMAAAABwAQQBuAFQAcgBpAHAANABBAGQAYwBVAG4AaQB0AAAAAgAxAAAAIgBBA"
+"G4AVAByAGkAcAA0AEEAZABjAEMAaABhAG4AbgBlAGwAAAACADAAAAAmAEEAbgBUAHIAaQBwADMAVA"
+"BoAHIAZQBzAGgAbwBsAGQATABvAHcAAAACADAAAAAoAEEAbgBUAHIAaQBwADMAVABoAHIAZQBzAGg"
+"AbwBsAGQASABpAGcAaAAAAAIAMAAAABoAQQBuAFQAcgBpAHAAMwBTAGkAZwBuAGEAbAAAAAIAMQAA"
+"ABoAQQBuAFQAcgBpAHAAMwBFAG4AYQBiAGwAZQAAAAIAMAAAABwAQQBuAFQAcgBpAHAAMwBBAGQAY"
+"wBVAG4AaQB0AAAAAgAxAAAAIgBBAG4AVAByAGkAcAAzAEEAZABjAEMAaABhAG4AbgBlAGwAAAACAD"
+"AAAAAmAEEAbgBUAHIAaQBwADIAVABoAHIAZQBzAGgAbwBsAGQATABvAHcAAAACADAAAAAoAEEAbgB"
+"UAHIAaQBwADIAVABoAHIAZQBzAGgAbwBsAGQASABpAGcAaAAAAAIAMAAAABoAQQBuAFQAcgBpAHAA"
+"MgBTAGkAZwBuAGEAbAAAAAIAMQAAABoAQQBuAFQAcgBpAHAAMgBFAG4AYQBiAGwAZQAAAAIAMAAAA"
+"BwAQQBuAFQAcgBpAHAAMgBBAGQAYwBVAG4AaQB0AAAAAgAxAAAAIgBBAG4AVAByAGkAcAAyAEEAZA"
+"BjAEMAaABhAG4AbgBlAGwAAAACADAAAAAmAEEAbgBUAHIAaQBwADEAVABoAHIAZQBzAGgAbwBsAGQ"
+"ATABvAHcAAAACADAAAAAoAEEAbgBUAHIAaQBwADEAVABoAHIAZQBzAGgAbwBsAGQASABpAGcAaAAA"
+"AAIAMAAAABoAQQBuAFQAcgBpAHAAMQBTAGkAZwBuAGEAbAAAAAIAMQAAABoAQQBuAFQAcgBpAHAAM"
+"QBFAG4AYQBiAGwAZQAAAAIAMAAAABwAQQBuAFQAcgBpAHAAMQBBAGQAYwBVAG4AaQB0AAAAAgAxAA"
+"AAIgBBAG4AVAByAGkAcAAxAEEAZABjAEMAaABhAG4AbgBlAGwAAAACADA="
+      CodeGenFloatingPointFormat "1"
+      ExternalModeSettings "AAAAfwAAAAAWUU1hcDxRU3RyaW5nLFFTdHJpbmc+AAAAAAYAAA"
+"AYAFQAcgBpAGcAZwBlAHIAVgBhAGwAdQBlAAAAAgAwAAAAGABUAHIAaQBnAGcAZQByAEQAZQBsAGE"
+"AeQAAAAIAMAAAABYAUwBlAG4AcwBpAHQAaQB2AGkAdAB5AAAAAgAwAAAAFgBSAGUAZgByAGUAcwBo"
+"AFIAYQB0AGUAAAAEADIAMAAAABQATgB1AG0AUwBhAG0AcABsAGUAcwAAAAgAOAAxADkAMgAAABQAR"
+"ABlAGMAaQBtAGEAdABpAG8AbgAAAAIAMQ=="
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Terminal {
+        Type          Output
+        Position      [39, -25]
+        Direction     right
+        Index         "1"
+      }
+      Schematic {
+        Location      [0, 24; 1920, 991]
+        ZoomFactor    2.94117
+        SliderPosition [0, 0]
+        ShowBrowser   off
+        BrowserWidth  100
+        Component {
+          Type          Scope
+          Name          "Scope"
+          Show          on
+          Position      [370, 210]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Location      [640, 276; 990, 517]
+          State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAb"
+"wBvAG0AQQByAGUAYQAAAAAA/////wAAADEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAA"
+"AA/////wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAAAAAA"
+"AAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAAV4AAADS"
+"AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AA"
+"AAAAAAAAA=="
+          SavedViews    "AAAAAgAAAAA="
+          HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJA"
+"AAAAQAAAGQAAAAHAAAAZAAAAAYAAABkAAAABQAAAGQAAAAEAAAAZAAAAAkAAABkAAAACAAAAGQAAA"
+"ADAAAAZAAAAAIAAABkAAAAgwAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAB"
+"jAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA"
+"AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAA"
+"AAAAAAgAAAAAQAAAAAAAAPoAAAAACA="
+          PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+          Axes          "1"
+          TimeRange     "0.0"
+          ScrollingMode "1"
+          SingleTimeAxis "1"
+          Open          "0"
+          Ts            "-1"
+          SampleLimit   "0"
+          XAxisLabel    "Time / s"
+          ShowLegend    "1"
+          Axis {
+            Name          ""
+            AutoScale     1
+            MinValue      0
+            MaxValue      1
+            Signals       {}
+            SignalTypes   [ ]
+            Untangle      0
+            KeepBaseline  off
+            BaselineValue 0
+          }
+          Fourier {
+            SingleXAxis       on
+            AxisLabel         "Frequency / Hz"
+            Scaling           0
+            PhaseDisplay      0
+            ShowFourierLegend off
+            Axis {
+              Name          ""
+              AutoScale     1
+              MinValue      0
+              MaxValue      1
+              Signals       {}
+              Untangle      0
+              KeepBaseline  off
+              BaselineValue 0
+            }
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "Constant4"
+          Show          off
+          Position      [265, 250]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-20, -10; 20, 10]
+          Parameter {
+            Variable      "Value"
+            Value         "0.25"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Reference
+          SrcComponent  "TIC2000_Lib/PWM"
+          Name          "PWM"
+          Show          on
+          Position      [440, 250]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Frame         [-25, -35; 25, 35]
+          Parameter {
+            Variable      "pwm"
+            Value         "[1]"
+            Show          off
+          }
+          Parameter {
+            Variable      "type"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "fc"
+            Value         "fsw"
+            Show          off
+          }
+          Parameter {
+            Variable      "fc_tol"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Phase"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "outmode"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "DelayVar"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "delay"
+            Value         "td"
+            Show          off
+          }
+          Parameter {
+            Variable      "DelayMin"
+            Value         "1e-6"
+            Show          off
+          }
+          Parameter {
+            Variable      "polarity"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "sequence"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "show_enable"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "AllowProtection"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "SyncIn"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "SyncOut"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "socsel"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "socsel_prd"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "intsel"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "intsel_prd"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "SpecifyOfflinePwmTclk"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "OfflinePwmTclk"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "tz1mode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "tz2mode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "tz3mode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "TargetPortIndices"
+            Value         "1"
+            Show          off
+          }
+          Terminal {
+            Type          Input
+            Position      [-25, 0]
+            Direction     left
+          }
+          Terminal {
+            Type          EventOutput
+            Position      [29, 15]
+            Direction     right
+          }
+          Terminal {
+            Type          EventOutput
+            Position      [29, -15]
+            Direction     right
+          }
+          Terminal {
+            Type          Input
+            Position      [-25, 10]
+            Direction     left
+          }
+          Terminal {
+            Type          Input
+            Position      [-25, -20]
+            Direction     left
+          }
+          Terminal {
+            Type          Input
+            Position      [-25, 20]
+            Direction     left
+          }
+          Terminal {
+            Type          Input
+            Position      [-25, -10]
+            Direction     left
+          }
+          Terminal {
+            Type          Input
+            Position      [-25, 5]
+            Direction     left
+          }
+          Terminal {
+            Type          EventInput
+            Position      [0, -35]
+            Direction     up
+          }
+          Terminal {
+            Type          EventOutput
+            Position      [29, 0]
+            Direction     right
+          }
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Constant4"
+          SrcTerminal   1
+          Points        [325, 250]
+          Branch {
+            DstComponent  "PWM"
+            DstTerminal   1
+          }
+          Branch {
+            Points        [325, 210]
+            DstComponent  "Scope"
+            DstTerminal   1
+          }
+        }
+      }
+    }
+  }
+}

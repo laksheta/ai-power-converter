@@ -37,25 +37,25 @@ Plecs {
 "T Box 3')\n\tsimu_target = 2;\t      \t\t% simulating default on FPGA - possi"
 "ble only for RT Box 2 or 3\n\t% set simu_target = 1 if wish to do only CPU si"
 "mulation on RT Box 2 or 3\n\tTs_plant = 2e-6;\t\t\t\t\t% discretization step "
-"size of the plant in s\nelse\n   error('Unsupported Target selection for this"
-" model. Please choose either ''RT Box 1'', ''RT Box 2'', or ''RT Box 3''.');"
-"\nend\n\n\n% Plant parameters\nsolution = [6.3900e-04 6.6000e-05 6.9121e+04 2"
-".1100e-07]\nL = solution(1)\nC = solution(2)\nfsw = solution(3)\ntd = solutio"
-"n(4)\n\nVdc = 48;\nVout= 5;\n\nCout =15e-6;\nRc= 7.5e-3;\n%L= 30e-6;\nRl= 50e"
-"-3;\n\n%fsw= 250e3;          % Switching frequency in Hz\n%td= %20e-9;       "
-"    % dead-time in s\n\n% Controller Design Inputs\nwc= 2*pi*fsw/10; \t\t% cr"
-"ossover frequency target\nwl= wc/10;       \t\t% integral pole frequency\nphi"
-"_m= 60*pi/180; \t% phase margin design target\n\n% Plant Transfer Function \n"
-"% Gp(s)=Gvd0*(1+s/wesr)/(1+s/(Q*w0)+(s/w0)^2)\nGvd0=Vdc; \nwesr= 1/(Rc*Cout);"
-"\nw0= 1/sqrt(L*Cout);\nQ=sqrt(L/Cout)/(Rc+Rl);\n\njwc= 1j*wc;\nGvd_wc= Gvd0*("
-"1 + jwc/wesr)/(1 + jwc/(Q*w0) + (jwc/w0)^2);\ngain_plant = abs(Gvd_wc);\nphi_"
-"plant = angle(Gvd_wc);\n\n% PID Controller Design\n% Gc(s) = Gpid0*(1+wl/s)*("
-"1+s/wz)/(1+s/wp)\nphi_target = -pi+phi_m;\nphi_boost = phi_target-phi_plant;"
-"\n\nwz=wc*sqrt((1-sin(phi_boost))/(1+sin(phi_boost)));\nwp=wc*sqrt((1+sin(phi"
-"_boost))/(1-sin(phi_boost)));\nGpid0=1/gain_plant * sqrt((1+(wc/wp)^2)/(1+(wc"
-"/wz)^2));\n\n% Convert to PID form\n% Gpid(s) = Kp+Ki/s+Kd*s/(s/Kf+1)\nKi = G"
-"pid0*wl;\nKf = wp;\nKp = Gpid0*(1+wl/wz)-Ki/Kf;\nKd = Gpid0/wz-Kp/Kf;\n\nclea"
-"r('jwc','Gvd_wc');"
+"size of the plant in s\n\tTs_controller = Ts_plant\nelse\n   error('Unsupport"
+"ed Target selection for this model. Please choose either ''RT Box 1'', ''RT B"
+"ox 2'', or ''RT Box 3''.');\nend\n\n\n% Plant parameters\nsolution = [6.3900e"
+"-04 6.6000e-05 6.9121e+04 2.1100e-07]\nL = solution(1)\nC = solution(2)\nfsw "
+"= solution(3)\ntd = solution(4)\n\nVdc = 48;\nVout= 5;\n\nCout =15e-6;\nRc= 7"
+".5e-3;\n%L= 30e-6;\nRl= 50e-3;\n\n%fsw= 250e3;          % Switching frequency"
+" in Hz\n%td= %20e-9;           % dead-time in s\n\n% Controller Design Inputs"
+"\nwc= 2*pi*fsw/10; \t\t% crossover frequency target\nwl= wc/10;       \t\t% i"
+"ntegral pole frequency\nphi_m= 60*pi/180; \t% phase margin design target\n\n%"
+" Plant Transfer Function \n% Gp(s)=Gvd0*(1+s/wesr)/(1+s/(Q*w0)+(s/w0)^2)\nGvd"
+"0=Vdc; \nwesr= 1/(Rc*Cout);\nw0= 1/sqrt(L*Cout);\nQ=sqrt(L/Cout)/(Rc+Rl);\n\n"
+"jwc= 1j*wc;\nGvd_wc= Gvd0*(1 + jwc/wesr)/(1 + jwc/(Q*w0) + (jwc/w0)^2);\ngain"
+"_plant = abs(Gvd_wc);\nphi_plant = angle(Gvd_wc);\n\n% PID Controller Design"
+"\n% Gc(s) = Gpid0*(1+wl/s)*(1+s/wz)/(1+s/wp)\nphi_target = -pi+phi_m;\nphi_bo"
+"ost = phi_target-phi_plant;\n\nwz=wc*sqrt((1-sin(phi_boost))/(1+sin(phi_boost"
+")));\nwp=wc*sqrt((1+sin(phi_boost))/(1-sin(phi_boost)));\nGpid0=1/gain_plant "
+"* sqrt((1+(wc/wp)^2)/(1+(wc/wz)^2));\n\n% Convert to PID form\n% Gpid(s) = Kp"
+"+Ki/s+Kd*s/(s/Kf+1)\nKi = Gpid0*wl;\nKf = wp;\nKp = Gpid0*(1+wl/wz)-Ki/Kf;\nK"
+"d = Gpid0/wz-Kp/Kf;\n\nclear('jwc','Gvd_wc');"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -81,7 +81,7 @@ Plecs {
   ScriptsDialogSplitterPos "0"
   Schematic {
     Location      [0, 24; 1920, 991]
-    ZoomFactor    1.96256
+    ZoomFactor    2.57012
     SliderPosition [0, 0]
     ShowBrowser   off
     BrowserWidth  100
@@ -211,17 +211,17 @@ Plecs {
           Direction     up
           Flipped       off
           LabelPosition south
-          Location      [0, 24; 1920, 1133]
+          Location      [0, 24; 1920, 1153]
           State         "AAAA/wAAAAD9AAAAAgAAAAEAAAB4AAABe/wCAAAAA/sAAAAQAFoAb"
 "wBvAG0AQQByAGUAYQAAAAAA/////wAAAFkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAA"
 "AA/////wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAHAAAAXsAAABjAP///wAAAAMAAAeAAAA"
-"AY/wBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABEAP///wAAB4AAAAPN"
+"AY/wBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABEAP///wAAB4AAAAPh"
 "AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AA"
 "AAAAAAAAA=="
           SavedViews    "AAAAAgAAAAA="
           HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJA"
-"AAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAACQAAAGQAAAAIAAAAZAAAAAEAAABkAAAAAwAAAGQAAA"
-"ACAAAAZAAAAAUAAABkAAAHcgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAC"
+"AAAAQAAAGQAAAACAAAAZAAAAAMAAABkAAAACAAAAGQAAAAJAAAAZAAAAAQAAABkAAAABQAAAGQAAA"
+"AGAAAAZAAAAAcAAABkAAAHcgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAC"
 "EAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA"
 "AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAA"
 "AAAAAbuAAAAAQAAAAAAAAPoAAAAACA="
@@ -530,21 +530,21 @@ Plecs {
           Type          Scope
           Name          "Scope2"
           Show          on
-          Position      [445, 150]
+          Position      [450, 145]
           Direction     up
           Flipped       off
           LabelPosition south
-          Location      [1, 31; 959, 1021]
+          Location      [0, 23; 1920, 1012]
           State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAb"
 "wBvAG0AQQByAGUAYQAAAAAA/////wAAADEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAA"
 "AA/////wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAAAAAA"
-"AAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAA74AAAO/"
+"AAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAB4AAAAO+"
 "AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AA"
 "AAAAAAAAA=="
           SavedViews    "AAAAAgAAAAA="
           HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJA"
-"AAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAACQAAAGQAAAAIAAAAZAAAAAEAAABkAAAAAwAAAGQAAA"
-"ACAAAAZAAAAAUAAABkAAAAlgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAB"
+"AAAAQAAAGQAAAACAAAAZAAAAAMAAABkAAAACAAAAGQAAAAJAAAAZAAAAAQAAABkAAAABQAAAGQAAA"
+"AGAAAAZAAAAAcAAABkAAAAlgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAB"
 "2AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA"
 "AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAA"
 "AAAAAAgAAAAAQAAAAAAAAPoAAAAACA="
@@ -939,7 +939,6 @@ Plecs {
           Type          Signal
           SrcComponent  "Mux1"
           SrcTerminal   1
-          Points        [415, 145]
           DstComponent  "Scope2"
           DstTerminal   1
         }
@@ -1030,7 +1029,7 @@ Plecs {
         Direction     left
       }
       Schematic {
-        Location      [1, 31; 959, 989]
+        Location      [0, 23; 1920, 990]
         ZoomFactor    1.96257
         SliderPosition [0, 0]
         ShowBrowser   off
@@ -2339,6 +2338,11 @@ Plecs {
         Position      [39, -25]
         Direction     right
       }
+      Terminal {
+        Type          Output
+        Position      [39, -15]
+        Direction     right
+      }
       Schematic {
         Location      [0, 24; 1920, 991]
         ZoomFactor    1.96257
@@ -3219,6 +3223,202 @@ Plecs {
             Show          off
           }
         }
+        Component {
+          Type          Reference
+          SrcComponent  "TIC2000_Lib/PWM (Variable)"
+          Name          "PWM (Variable)"
+          Show          on
+          Position      [45, 50]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Frame         [-30, -35; 30, 35]
+          Parameter {
+            Variable      "SyncChainConfig"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "num_pwm"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "PwmGenerators"
+            Value         "[1 2 3]"
+            Show          off
+          }
+          Parameter {
+            Variable      "pwm_3"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "pwm_2"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "pwm_1"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "type"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "fc"
+            Value         "1e3"
+            Show          off
+          }
+          Parameter {
+            Variable      "fc_tol"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "fvar"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "DelayVar"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "delay"
+            Value         "td"
+            Show          off
+          }
+          Parameter {
+            Variable      "DelayMin"
+            Value         "0.1e-6"
+            Show          off
+          }
+          Parameter {
+            Variable      "polarity"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "ShowEnable"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "AllowProtection"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "sync_src"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "SyncOut"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "socsel"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "socsel_prd"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "intsel"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "intsel_prd"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "SpecifyOfflinePwmTclk"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "OfflinePwmTclk"
+            Value         "1/100e6"
+            Show          off
+          }
+          Parameter {
+            Variable      "tz1mode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "tz2mode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "tz3mode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "TargetPortIndices"
+            Value         "2"
+            Show          off
+          }
+          Terminal {
+            Type          Input
+            Position      [-30, -10]
+            Direction     left
+          }
+          Terminal {
+            Type          EventOutput
+            Position      [34, 15]
+            Direction     right
+          }
+          Terminal {
+            Type          EventOutput
+            Position      [34, -15]
+            Direction     right
+          }
+          Terminal {
+            Type          Input
+            Position      [-30, 10]
+            Direction     left
+          }
+          Terminal {
+            Type          EventOutput
+            Position      [34, 0]
+            Direction     right
+          }
+          Terminal {
+            Type          EventInput
+            Position      [0, -35]
+            Direction     up
+          }
+          Terminal {
+            Type          Input
+            Position      [-30, 0]
+            Direction     left
+          }
+          Terminal {
+            Type          Input
+            Position      [-30, -20]
+            Direction     left
+          }
+          Terminal {
+            Type          Input
+            Position      [-30, 20]
+            Direction     left
+          }
+        }
         Connection {
           Type          Signal
           SrcComponent  "Constant2"
@@ -3356,7 +3556,7 @@ Plecs {
       Type          SignalDemux
       Name          "Demux"
       Show          off
-      Position      [155, 180]
+      Position      [150, 180]
       Direction     right
       Flipped       on
       LabelPosition south
@@ -3458,9 +3658,74 @@ Plecs {
       Flipped       off
       LabelPosition south
       Frame         [-35, -35; 35, 35]
+      TreatAsAtomicUnit on
       SampleTime    "-1"
+      TaskingMode "1"
+      CodeGenEnable on
+      CodeGenSampleTime "3e-6"
       CodeGenDiscretizationMethod "2"
-      CodeGenTarget "Generic"
+      CodeGenTarget "TI2837xS"
+      CodeGenTargetSettings "AAAAfwAAAAAlUU1hcDxRU3RyaW5nLFFNYXA8UVN0cmluZyxRU"
+"3RyaW5nPiA+AAAAAAEAAAAQAFQASQAyADgAMwA3AHgAUwAAAFgAAAASAHUAcwBlAEkAbgB0AE8Acw"
+"BjAAAAAgAxAAAAGAB1AG4AaQBmAGwAYQBzAGgARgBpAGwAZQAAAAAAAAAWAHQAYQBzAGsARgByAGU"
+"AcQBUAG8AbAAAAAIAMgAAABIAcwB5AHMAQwBsAGsATQBIAHoAAAAGADEAOQAwAAAAFABpAG4AcwB0"
+"AGEAbABsAEQAaQByAAAAAAAAAA4AZwBlAG4ATwBuAGwAeQAAAAIAMgAAABwAZQB4AHQATQBvAGQAZ"
+"QBTAGMAaQBQAGkAbgBzAAAADgBbADgANQAsADgANABdAAAAIgBlAHgAdABNAG8AZABlAEIAdQBmAG"
+"YAZQByAFMAaQB6AGUAAAAIADEAMAAwADAAAAASAGUAeAB0AEMAbABrAE0ASAB6AAAABAAzADAAAAA"
+"IAGMAaABpAHAAAAACADEAAAAWAGIAdQBpAGwAZABDAG8AbgBmAGkAZwAAAAIAMQAAAAoAYgBvAGEA"
+"cgBkAAAAAgAyAAAAEABWAHIAZQBmAEEAZABjAEQAAAAGADMALgAwAAAAEABWAHIAZQBmAEEAZABjA"
+"EMAAAAGADMALgAwAAAAEABWAHIAZQBmAEEAZABjAEIAAAAGADMALgAwAAAAEABWAHIAZQBmAEEAZA"
+"BjAEEAAAAGADMALgAwAAAANABVAFMARQBfAFMAVABBAFIAVABfAFQASQBNAEUAXwBJAE4AXwBJAE4"
+"ASQBUAF8ARgBDAE4AAAACADAAAABKAFUAUwBFAF8ARABBAFQAQQBfAFQAWQBQAEUAUwBfAEYATwBS"
+"AF8AVABVAE4AQQBCAEwARQBfAFAAQQBSAEEATQBFAFQARQBSAFMAAAACADEAAAAOAFQAegAzAEcAc"
+"ABpAG8AAAACADAAAAASAFQAegAzAEUAbgBhAGIAbABlAAAAAgAwAAAADgBUAHoAMgBHAHAAaQBvAA"
+"AAAgAwAAAAEgBUAHoAMgBFAG4AYQBiAGwAZQAAAAIAMAAAAA4AVAB6ADEARwBwAGkAbwAAAAIAMAA"
+"AABIAVAB6ADEARQBuAGEAYgBsAGUAAAACADAAAAAaAFQAQQBSAEcARQBUAF8ARABFAFYASQBDAEUA"
+"AAAaADAAfABDAE8ATQAxADMAfAAtADEAfAAtADEAAAAgAFMAYQBtAHAAbABlAFQAaQBtAGUAUgBlA"
+"GwAVABvAGwAAAAEADUAMAAAABQAUAB3AG0AOQBHAHAAaQBvAEUAbgAAAAIAMAAAABIAUAB3AG0AOQ"
+"BCAEcAcABpAG8AAAAEADEANwAAABIAUAB3AG0AOQBBAEcAcABpAG8AAAAEADEANgAAABQAUAB3AG0"
+"AOABHAHAAaQBvAEUAbgAAAAIAMAAAABIAUAB3AG0AOABCAEcAcABpAG8AAAAEADEANQAAABIAUAB3"
+"AG0AOABBAEcAcABpAG8AAAAEADEANAAAABQAUAB3AG0ANwBHAHAAaQBvAEUAbgAAAAIAMAAAABIAU"
+"AB3AG0ANwBCAEcAcABpAG8AAAAEADEAMwAAABIAUAB3AG0ANwBBAEcAcABpAG8AAAAEADEAMgAAAB"
+"QAUAB3AG0ANgBHAHAAaQBvAEUAbgAAAAIAMAAAABIAUAB3AG0ANgBCAEcAcABpAG8AAAAEADEAMQA"
+"AABIAUAB3AG0ANgBBAEcAcABpAG8AAAAEADEAMAAAABQAUAB3AG0ANQBHAHAAaQBvAEUAbgAAAAIA"
+"MAAAABIAUAB3AG0ANQBCAEcAcABpAG8AAAACADkAAAASAFAAdwBtADUAQQBHAHAAaQBvAAAAAgA4A"
+"AAAFABQAHcAbQA0AEcAcABpAG8ARQBuAAAAAgAwAAAAEgBQAHcAbQA0AEIARwBwAGkAbwAAAAIANw"
+"AAABIAUAB3AG0ANABBAEcAcABpAG8AAAACADYAAAAUAFAAdwBtADMARwBwAGkAbwBFAG4AAAACADA"
+"AAAASAFAAdwBtADMAQgBHAHAAaQBvAAAAAgA1AAAAEgBQAHcAbQAzAEEARwBwAGkAbwAAAAIANAAA"
+"ABQAUAB3AG0AMgBHAHAAaQBvAEUAbgAAAAIAMAAAABIAUAB3AG0AMgBCAEcAcABpAG8AAAACADMAA"
+"AASAFAAdwBtADIAQQBHAHAAaQBvAAAAAgAyAAAAFABQAHcAbQAxAEcAcABpAG8ARQBuAAAAAgAwAA"
+"AAEgBQAHcAbQAxAEIARwBwAGkAbwAAAAIAMQAAABIAUAB3AG0AMQBBAEcAcABpAG8AAAACADAAAAA"
+"WAFAAdwBtADEAMgBHAHAAaQBvAEUAbgAAAAIAMAAAABQAUAB3AG0AMQAyAEIARwBwAGkAbwAAAAQA"
+"MgAzAAAAFABQAHcAbQAxADIAQQBHAHAAaQBvAAAABAAyADIAAAAWAFAAdwBtADEAMQBHAHAAaQBvA"
+"EUAbgAAAAIAMAAAABQAUAB3AG0AMQAxAEIARwBwAGkAbwAAAAQAMgAxAAAAFABQAHcAbQAxADEAQQ"
+"BHAHAAaQBvAAAABAAyADAAAAAWAFAAdwBtADEAMABHAHAAaQBvAEUAbgAAAAIAMAAAABQAUAB3AG0"
+"AMQAwAEIARwBwAGkAbwAAAAQAMQA5AAAAFABQAHcAbQAxADAAQQBHAHAAaQBvAAAABAAxADgAAAAi"
+"AEwAaQBuAGsAZQByAEMAbwBtAG0AYQBuAGQARgBpAGwAZQAAAAAAAAAaAEUAWABUAEUAUgBOAEEAT"
+"ABfAE0ATwBEAEUAAAACADEAAAAmAEEAbgBUAHIAaQBwADQAVABoAHIAZQBzAGgAbwBsAGQATABvAH"
+"cAAAACADAAAAAoAEEAbgBUAHIAaQBwADQAVABoAHIAZQBzAGgAbwBsAGQASABpAGcAaAAAAAIAMAA"
+"AABoAQQBuAFQAcgBpAHAANABTAGkAZwBuAGEAbAAAAAIAMQAAABoAQQBuAFQAcgBpAHAANABFAG4A"
+"YQBiAGwAZQAAAAIAMAAAABwAQQBuAFQAcgBpAHAANABBAGQAYwBVAG4AaQB0AAAAAgAxAAAAIgBBA"
+"G4AVAByAGkAcAA0AEEAZABjAEMAaABhAG4AbgBlAGwAAAACADAAAAAmAEEAbgBUAHIAaQBwADMAVA"
+"BoAHIAZQBzAGgAbwBsAGQATABvAHcAAAACADAAAAAoAEEAbgBUAHIAaQBwADMAVABoAHIAZQBzAGg"
+"AbwBsAGQASABpAGcAaAAAAAIAMAAAABoAQQBuAFQAcgBpAHAAMwBTAGkAZwBuAGEAbAAAAAIAMQAA"
+"ABoAQQBuAFQAcgBpAHAAMwBFAG4AYQBiAGwAZQAAAAIAMAAAABwAQQBuAFQAcgBpAHAAMwBBAGQAY"
+"wBVAG4AaQB0AAAAAgAxAAAAIgBBAG4AVAByAGkAcAAzAEEAZABjAEMAaABhAG4AbgBlAGwAAAACAD"
+"AAAAAmAEEAbgBUAHIAaQBwADIAVABoAHIAZQBzAGgAbwBsAGQATABvAHcAAAACADAAAAAoAEEAbgB"
+"UAHIAaQBwADIAVABoAHIAZQBzAGgAbwBsAGQASABpAGcAaAAAAAIAMAAAABoAQQBuAFQAcgBpAHAA"
+"MgBTAGkAZwBuAGEAbAAAAAIAMQAAABoAQQBuAFQAcgBpAHAAMgBFAG4AYQBiAGwAZQAAAAIAMAAAA"
+"BwAQQBuAFQAcgBpAHAAMgBBAGQAYwBVAG4AaQB0AAAAAgAxAAAAIgBBAG4AVAByAGkAcAAyAEEAZA"
+"BjAEMAaABhAG4AbgBlAGwAAAACADAAAAAmAEEAbgBUAHIAaQBwADEAVABoAHIAZQBzAGgAbwBsAGQ"
+"ATABvAHcAAAACADAAAAAoAEEAbgBUAHIAaQBwADEAVABoAHIAZQBzAGgAbwBsAGQASABpAGcAaAAA"
+"AAIAMAAAABoAQQBuAFQAcgBpAHAAMQBTAGkAZwBuAGEAbAAAAAIAMQAAABoAQQBuAFQAcgBpAHAAM"
+"QBFAG4AYQBiAGwAZQAAAAIAMAAAABwAQQBuAFQAcgBpAHAAMQBBAGQAYwBVAG4AaQB0AAAAAgAxAA"
+"AAIgBBAG4AVAByAGkAcAAxAEEAZABjAEMAaABhAG4AbgBlAGwAAAACADA="
+      CodeGenFloatingPointFormat "1"
+      ExternalModeSettings "AAAAfwAAAAAWUU1hcDxRU3RyaW5nLFFTdHJpbmc+AAAAAAYAAA"
+"AYAFQAcgBpAGcAZwBlAHIAVgBhAGwAdQBlAAAAAgAwAAAAGABUAHIAaQBnAGcAZQByAEQAZQBsAGE"
+"AeQAAAAIAMAAAABYAUwBlAG4AcwBpAHQAaQB2AGkAdAB5AAAAAgAwAAAAFgBSAGUAZgByAGUAcwBo"
+"AFIAYQB0AGUAAAAEADIAMAAAABQATgB1AG0AUwBhAG0AcABsAGUAcwAAAAgAOAAxADkAMgAAABQAR"
+"ABlAGMAaQBtAGEAdABpAG8AbgAAAAIAMQ=="
       MaskDisplayLang "2"
       MaskIconFrame on
       MaskIconOpaque off
@@ -3469,6 +3734,7 @@ Plecs {
         Type          Output
         Position      [-39, -15]
         Direction     left
+        Index         "1"
       }
       Schematic {
         Location      [0, 24; 1920, 991]
@@ -3476,202 +3742,6 @@ Plecs {
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
-        Component {
-          Type          Reference
-          SrcComponent  "TIC2000_Lib/PWM (Variable)"
-          Name          "PWM (Variable)"
-          Show          on
-          Position      [425, 260]
-          Direction     up
-          Flipped       off
-          LabelPosition south
-          Frame         [-30, -35; 30, 35]
-          Parameter {
-            Variable      "SyncChainConfig"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "num_pwm"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "PwmGenerators"
-            Value         "[1 2 3]"
-            Show          off
-          }
-          Parameter {
-            Variable      "pwm_3"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "pwm_2"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "pwm_1"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "type"
-            Value         "2"
-            Show          off
-          }
-          Parameter {
-            Variable      "fc"
-            Value         "fsw"
-            Show          off
-          }
-          Parameter {
-            Variable      "fc_tol"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "fvar"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "DelayVar"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "delay"
-            Value         "td"
-            Show          off
-          }
-          Parameter {
-            Variable      "DelayMin"
-            Value         "0.1e-6"
-            Show          off
-          }
-          Parameter {
-            Variable      "polarity"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "ShowEnable"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "AllowProtection"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "sync_src"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "SyncOut"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "socsel"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "socsel_prd"
-            Value         ""
-            Show          off
-          }
-          Parameter {
-            Variable      "intsel"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "intsel_prd"
-            Value         ""
-            Show          off
-          }
-          Parameter {
-            Variable      "SpecifyOfflinePwmTclk"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "OfflinePwmTclk"
-            Value         "1/100e6"
-            Show          off
-          }
-          Parameter {
-            Variable      "tz1mode"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "tz2mode"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "tz3mode"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "TargetPortIndices"
-            Value         "1"
-            Show          off
-          }
-          Terminal {
-            Type          Input
-            Position      [-30, -10]
-            Direction     left
-          }
-          Terminal {
-            Type          EventOutput
-            Position      [34, 15]
-            Direction     right
-          }
-          Terminal {
-            Type          EventOutput
-            Position      [34, -15]
-            Direction     right
-          }
-          Terminal {
-            Type          Input
-            Position      [-30, 10]
-            Direction     left
-          }
-          Terminal {
-            Type          EventOutput
-            Position      [34, 0]
-            Direction     right
-          }
-          Terminal {
-            Type          EventInput
-            Position      [0, -35]
-            Direction     up
-          }
-          Terminal {
-            Type          Input
-            Position      [-30, 0]
-            Direction     left
-          }
-          Terminal {
-            Type          Input
-            Position      [-30, -20]
-            Direction     left
-          }
-          Terminal {
-            Type          Input
-            Position      [-30, 20]
-            Direction     left
-          }
-        }
         Component {
           Type          Constant
           Name          "Constant3"
@@ -3773,12 +3843,197 @@ Plecs {
             Show          off
           }
         }
+        Component {
+          Type          Reference
+          SrcComponent  "TIC2000_Lib/PWM"
+          Name          "PWM"
+          Show          on
+          Position      [440, 250]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Frame         [-25, -35; 25, 35]
+          Parameter {
+            Variable      "pwm"
+            Value         "[1]"
+            Show          off
+          }
+          Parameter {
+            Variable      "type"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "fc"
+            Value         "2e3"
+            Show          off
+          }
+          Parameter {
+            Variable      "fc_tol"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Phase"
+            Value         "0"
+            Show          off
+          }
+          Parameter {
+            Variable      "outmode"
+            Value         "2"
+            Show          off
+          }
+          Parameter {
+            Variable      "DelayVar"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "delay"
+            Value         "td"
+            Show          off
+          }
+          Parameter {
+            Variable      "DelayMin"
+            Value         "1e-6"
+            Show          off
+          }
+          Parameter {
+            Variable      "polarity"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "sequence"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "show_enable"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "AllowProtection"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "SyncIn"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "SyncOut"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "socsel"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "socsel_prd"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "intsel"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "intsel_prd"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "SpecifyOfflinePwmTclk"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "OfflinePwmTclk"
+            Value         ""
+            Show          off
+          }
+          Parameter {
+            Variable      "tz1mode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "tz2mode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "tz3mode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "TargetPortIndices"
+            Value         "1"
+            Show          off
+          }
+          Terminal {
+            Type          Input
+            Position      [-25, 0]
+            Direction     left
+          }
+          Terminal {
+            Type          EventOutput
+            Position      [29, 15]
+            Direction     right
+          }
+          Terminal {
+            Type          EventOutput
+            Position      [29, -15]
+            Direction     right
+          }
+          Terminal {
+            Type          Input
+            Position      [-25, 10]
+            Direction     left
+          }
+          Terminal {
+            Type          Input
+            Position      [-25, -20]
+            Direction     left
+          }
+          Terminal {
+            Type          Input
+            Position      [-25, 20]
+            Direction     left
+          }
+          Terminal {
+            Type          Input
+            Position      [-25, -10]
+            Direction     left
+          }
+          Terminal {
+            Type          Input
+            Position      [-25, 5]
+            Direction     left
+          }
+          Terminal {
+            Type          EventInput
+            Position      [0, -35]
+            Direction     up
+          }
+          Terminal {
+            Type          EventOutput
+            Position      [29, 0]
+            Direction     right
+          }
+        }
         Connection {
           Type          Signal
           SrcComponent  "Constant3"
           SrcTerminal   1
-          DstComponent  "PWM (Variable)"
-          DstTerminal   4
+          Points        [395, 270]
         }
         Connection {
           Type          Signal
@@ -3786,7 +4041,7 @@ Plecs {
           SrcTerminal   1
           Points        [325, 250]
           Branch {
-            DstComponent  "PWM (Variable)"
+            DstComponent  "PWM"
             DstTerminal   1
           }
           Branch {
@@ -6159,6 +6414,22 @@ Plecs {
     }
     Connection {
       Type          Signal
+      SrcComponent  "Demux"
+      SrcTerminal   2
+      Points        [165, 175; 165, 155]
+      DstComponent  "Plant Buck Converter"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Demux"
+      SrcTerminal   3
+      Points        [170, 185]
+      DstComponent  "Plant Buck Converter"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
       SrcComponent  "TI Controller"
       SrcTerminal   1
       Points        [65, 295; 65, 260]
@@ -6170,18 +6441,6 @@ Plecs {
         DstComponent  "Scope3"
         DstTerminal   1
       }
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Demux"
-      SrcTerminal   2
-      Points        [185, 175]
-    }
-    Connection {
-      Type          Signal
-      SrcComponent  "Demux"
-      SrcTerminal   3
-      Points        [185, 185]
     }
   }
 }
