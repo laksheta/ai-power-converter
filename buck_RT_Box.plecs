@@ -12,7 +12,7 @@ Plecs {
   Refine        "5"
   ZCStepSize    "1e-9"
   RelTol        "1e-4"
-  AbsTol        "-1"s
+  AbsTol        "-1"
   TurnOnThreshold "0"
   NonIdealSwitchResistance "1"
   SyncFixedStepTasks "2"
