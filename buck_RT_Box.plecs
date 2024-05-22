@@ -12,7 +12,7 @@ Plecs {
   Refine        "5"
   ZCStepSize    "1e-9"
   RelTol        "1e-4"
-  AbsTol        "-1"
+  AbsTol        "-1"s
   TurnOnThreshold "0"
   NonIdealSwitchResistance "1"
   SyncFixedStepTasks "2"
@@ -28,23 +28,23 @@ Plecs {
   AlgebraicLoopWithStateMachineMsg "2"
   AssertionAction "1"
   FixedPointDatatypeOverride "1"
-  InitializationCommands "% Plant parameters\nsolution = [7.54000e-04 6.70000e"
-"-05 1.20247e+05 1.00000e-06]\nL = solution(1)\nC = solution(2)\nfsw = solutio"
-"n(3)\ntd = solution(4)\n\nVdc = 48;\nVout= 5;\n\nCout =15e-6;\nRc= 7.5e-3;\n%"
-"L= 30e-6;\nRl= 50e-3;\n\n%fsw= 250e3;          % Switching frequency in Hz\n%"
-"td= %20e-9;           % dead-time in s\n\n% Controller Design Inputs\nwc= 2*p"
-"i*fsw/10; \t\t% crossover frequency target\nwl= wc/10;       \t\t% integral p"
-"ole frequency\nphi_m= 60*pi/180; \t% phase margin design target\n\n% Plant Tr"
-"ansfer Function \n% Gp(s)=Gvd0*(1+s/wesr)/(1+s/(Q*w0)+(s/w0)^2)\nGvd0=Vdc; \n"
-"wesr= 1/(Rc*Cout);\nw0= 1/sqrt(L*Cout);\nQ=sqrt(L/Cout)/(Rc+Rl);\n\njwc= 1j*w"
-"c;\nGvd_wc= Gvd0*(1 + jwc/wesr)/(1 + jwc/(Q*w0) + (jwc/w0)^2);\ngain_plant = "
-"abs(Gvd_wc);\nphi_plant = angle(Gvd_wc);\n\n% PID Controller Design\n% Gc(s) "
-"= Gpid0*(1+wl/s)*(1+s/wz)/(1+s/wp)\nphi_target = -pi+phi_m;\nphi_boost = phi_"
-"target-phi_plant;\n\nwz=wc*sqrt((1-sin(phi_boost))/(1+sin(phi_boost)));\nwp=w"
-"c*sqrt((1+sin(phi_boost))/(1-sin(phi_boost)));\nGpid0=1/gain_plant * sqrt((1+"
-"(wc/wp)^2)/(1+(wc/wz)^2));\n\n% Convert to PID form\n% Gpid(s) = Kp+Ki/s+Kd*s"
-"/(s/Kf+1)\nKi = Gpid0*wl;\nKf = wp;\nKp = Gpid0*(1+wl/wz)-Ki/Kf;\nKd = Gpid0/"
-"wz-Kp/Kf;\n\nclear('jwc','Gvd_wc');"
+  InitializationCommands "% Plant parameters\nsolution = [6.3900e-04 6.6000e-0"
+"5 6.9121e+04 2.1100e-07]\nL = solution(1)\nC = solution(2)\nfsw = solution(3)"
+"\ntd = solution(4)\n\nVdc = 48;\nVout= 5;\n\nCout =15e-6;\nRc= 7.5e-3;\n%L= 3"
+"0e-6;\nRl= 50e-3;\n\n%fsw= 250e3;          % Switching frequency in Hz\n%td= "
+"%20e-9;           % dead-time in s\n\n% Controller Design Inputs\nwc= 2*pi*fs"
+"w/10; \t\t% crossover frequency target\nwl= wc/10;       \t\t% integral pole "
+"frequency\nphi_m= 60*pi/180; \t% phase margin design target\n\n% Plant Transf"
+"er Function \n% Gp(s)=Gvd0*(1+s/wesr)/(1+s/(Q*w0)+(s/w0)^2)\nGvd0=Vdc; \nwesr"
+"= 1/(Rc*Cout);\nw0= 1/sqrt(L*Cout);\nQ=sqrt(L/Cout)/(Rc+Rl);\n\njwc= 1j*wc;\n"
+"Gvd_wc= Gvd0*(1 + jwc/wesr)/(1 + jwc/(Q*w0) + (jwc/w0)^2);\ngain_plant = abs("
+"Gvd_wc);\nphi_plant = angle(Gvd_wc);\n\n% PID Controller Design\n% Gc(s) = Gp"
+"id0*(1+wl/s)*(1+s/wz)/(1+s/wp)\nphi_target = -pi+phi_m;\nphi_boost = phi_targ"
+"et-phi_plant;\n\nwz=wc*sqrt((1-sin(phi_boost))/(1+sin(phi_boost)));\nwp=wc*sq"
+"rt((1+sin(phi_boost))/(1-sin(phi_boost)));\nGpid0=1/gain_plant * sqrt((1+(wc/"
+"wp)^2)/(1+(wc/wz)^2));\n\n% Convert to PID form\n% Gpid(s) = Kp+Ki/s+Kd*s/(s/"
+"Kf+1)\nKi = Gpid0*wl;\nKf = wp;\nKp = Gpid0*(1+wl/wz)-Ki/Kf;\nKd = Gpid0/wz-K"
+"p/Kf;\n\nclear('jwc','Gvd_wc');"
   InitialState  "1"
   SystemState   ""
   TaskingMode   "1"
@@ -69,9 +69,9 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [0, 23; 1920, 990]
-    ZoomFactor    1.71498
-    SliderPosition [234, 0]
+    Location      [0, 24; 1920, 991]
+    ZoomFactor    2.24589
+    SliderPosition [0, 0]
     ShowBrowser   off
     BrowserWidth  100
     Component {
@@ -82,7 +82,6 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      CommentOut    DisabledOpenCircuit
       Frame         [-35, -35; 35, 35]
       TreatAsAtomicUnit on
       SampleTime    "-1"
@@ -120,12 +119,6 @@ Plecs {
       MaskIconOpaque off
       MaskIconRotates on
       Terminal {
-        Type          Output
-        Position      [39, -25]
-        Direction     right
-        Index         "1"
-      }
-      Terminal {
         Type          Input
         Position      [-35, -5]
         Direction     left
@@ -138,9 +131,9 @@ Plecs {
         Index         "2"
       }
       Schematic {
-        Location      [1, 31; 959, 989]
+        Location      [9, 32; 1357, 669]
         ZoomFactor    1
-        SliderPosition [124, 0]
+        SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
         Component {
@@ -193,17 +186,17 @@ Plecs {
           Direction     up
           Flipped       off
           LabelPosition south
-          Location      [0, 24; 1920, 1103]
+          Location      [0, 24; 1920, 1133]
           State         "AAAA/wAAAAD9AAAAAgAAAAEAAAB4AAABe/wCAAAAA/sAAAAQAFoAb"
 "wBvAG0AQQByAGUAYQAAAAAA/////wAAAFkA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAA"
 "AA/////wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAHAAAAXsAAABjAP///wAAAAMAAAeAAAA"
-"AY/wBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABEAP///wAAB4AAAAOv"
+"AY/wBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABEAP///wAAB4AAAAPN"
 "AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AA"
 "AAAAAAAAA=="
           SavedViews    "AAAAAgAAAAA="
           HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJA"
-"AAAAQAAAGQAAAAHAAAAZAAAAAYAAABkAAAABQAAAGQAAAAEAAAAZAAAAAkAAABkAAAACAAAAGQAAA"
-"ADAAAAZAAAAAIAAABkAAAHcgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAC"
+"AAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAACQAAAGQAAAAIAAAAZAAAAAEAAABkAAAAAwAAAGQAAA"
+"ACAAAAZAAAAAUAAABkAAAHcgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAC"
 "EAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA"
 "AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAA"
 "AAAAAbuAAAAAQAAAAAAAAPoAAAAACA="
@@ -804,71 +797,6 @@ Plecs {
           }
         }
         Component {
-          Type          Reference
-          SrcComponent  "PLECSRTBoxLib/Analog Out1"
-          Name          "Analog Out1"
-          Show          on
-          Position      [835, 505]
-          Direction     up
-          Flipped       off
-          LabelPosition south
-          Frame         [-25, -20; 25, 20]
-          Parameter {
-            Variable      "channel"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "scale"
-            Value         "1"
-            Show          off
-          }
-          Parameter {
-            Variable      "offset"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "minOutput"
-            Value         "0"
-            Show          off
-          }
-          Parameter {
-            Variable      "maxOutput"
-            Value         "3"
-            Show          off
-          }
-          Parameter {
-            Variable      "TargetPortIndices"
-            Value         "1"
-            Show          off
-          }
-          Terminal {
-            Type          Input
-            Position      [-25, 0]
-            Direction     left
-          }
-        }
-        Component {
-          Type          From
-          Name          "From2"
-          Show          off
-          Position      [750, 505]
-          Direction     right
-          Flipped       off
-          LabelPosition south
-          Parameter {
-            Variable      "Tag"
-            Value         "V"
-            Show          off
-          }
-          Parameter {
-            Variable      "Visibility"
-            Value         "1"
-            Show          off
-          }
-        }
-        Component {
           Type          PulseGenerator
           Name          "1A Load\n@ 200 Hz"
           Show          on
@@ -953,17 +881,17 @@ Plecs {
           Direction     up
           Flipped       off
           LabelPosition south
-          Location      [1, 31; 959, 1011]
+          Location      [1, 31; 959, 1021]
           State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAb"
 "wBvAG0AQQByAGUAYQAAAAAA/////wAAADEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAA"
 "AA/////wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAAAAAA"
-"AAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAA74AAAO1"
+"AAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAA74AAAO/"
 "AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AA"
 "AAAAAAAAA=="
           SavedViews    "AAAAAgAAAAA="
           HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJA"
-"AAAAQAAAGQAAAAHAAAAZAAAAAYAAABkAAAABQAAAGQAAAAEAAAAZAAAAAkAAABkAAAACAAAAGQAAA"
-"ADAAAAZAAAAAIAAABkAAAAlgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAB"
+"AAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAACQAAAGQAAAAIAAAAZAAAAAEAAABkAAAAAwAAAGQAAA"
+"ACAAAAZAAAAAUAAABkAAAAlgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAB"
 "2AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA"
 "AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAA"
 "AAAAAAgAAAAAQAAAAAAAAPoAAAAACA="
@@ -1042,7 +970,7 @@ Plecs {
           }
           Parameter {
             Variable      "TargetPortIndices"
-            Value         "2"
+            Value         "1"
             Show          off
           }
           Terminal {
@@ -1073,7 +1001,7 @@ Plecs {
           }
           Parameter {
             Variable      "TargetPortIndices"
-            Value         "3"
+            Value         "2"
             Show          off
           }
           Terminal {
@@ -1281,13 +1209,6 @@ Plecs {
           SrcTerminal   2
           DstComponent  "C"
           DstTerminal   2
-        }
-        Connection {
-          Type          Signal
-          SrcComponent  "From2"
-          SrcTerminal   1
-          DstComponent  "Analog Out1"
-          DstTerminal   1
         }
         Connection {
           Type          Signal
@@ -1628,7 +1549,7 @@ Plecs {
             Direction     left
           }
           Schematic {
-            Location      [0, 23; 1920, 990]
+            Location      [0, 24; 1920, 991]
             ZoomFactor    2.94117
             SliderPosition [0, 0]
             ShowBrowser   off
@@ -1756,7 +1677,7 @@ Plecs {
                 Direction     left
               }
               Schematic {
-                Location      [931, 355; 1314, 560]
+                Location      [931, 355; 1314, 568]
                 ZoomFactor    1
                 SliderPosition [0, 0]
                 ShowBrowser   off
@@ -2379,17 +2300,17 @@ Plecs {
           Direction     up
           Flipped       off
           LabelPosition south
-          Location      [0, 23; 1920, 1012]
+          Location      [0, 24; 1920, 1033]
           State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAb"
 "wBvAG0AQQByAGUAYQAAAAAA/////wAAADEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAA"
 "AA/////wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAAAAAA"
-"AAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAB4AAAAO+"
+"AAPwBAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAB4AAAAPS"
 "AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AA"
 "AAAAAAAAA=="
           SavedViews    "AAAAAgAAAAA="
           HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJA"
-"AAAAQAAAGQAAAAHAAAAZAAAAAYAAABkAAAABQAAAGQAAAAEAAAAZAAAAAkAAABkAAAACAAAAGQAAA"
-"ADAAAAZAAAAAIAAABkAAAAgwAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAB"
+"AAABAAAAGQAAAAHAAAAZAAAAAYAAABkAAAACQAAAGQAAAAIAAAAZAAAAAEAAABkAAAAAwAAAGQAAA"
+"ACAAAAZAAAAAUAAABkAAAAgwAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAAB"
 "jAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAA"
 "AAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAA"
 "AAAAAAgAAAAAQAAAAAAAAPoAAAAACA="
@@ -3621,7 +3542,7 @@ Plecs {
           Type          Signal
           SrcComponent  "Sum"
           SrcTerminal   1
-          Points        [410, 215; 410, 180]
+          Points        [410, 215]
           DstComponent  "Mux1"
           DstTerminal   2
         }
@@ -4164,17 +4085,17 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [1, 31; 959, 1021]
+      Location      [0, 23; 1920, 1012]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAADEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
 "///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAABjAP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAA74AAAO/AAAA"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABEAP///wAAB4AAAAO+AAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
-"QAAAGQAAAAHAAAAZAAAAAYAAABkAAAABQAAAGQAAAAEAAAAZAAAAAkAAABkAAAACAAAAGQAAAADAA"
-"AAZAAAAAIAAABkAAAAtwAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACXAAA"
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAB"
+"AAAAGQAAAAHAAAAZAAAAAYAAABkAAAACQAAAGQAAAAIAAAAZAAAAAEAAABkAAAAAwAAAGQAAAACAA"
+"AAZAAAAAUAAABkAAAAtwAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACXAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
 "AAgAAAAAQAAAAAAAAPoAAAAACA="
@@ -4195,7 +4116,7 @@ Plecs {
         MaxValue      1
         Signals       {}
         SignalTypes   [ ]
-        Untangle      0
+        Untangle      1
         KeepBaseline  off
         BaselineValue 0
       }
@@ -6507,9 +6428,7 @@ Plecs {
     }
     Connection {
       Type          Signal
-      SrcComponent  "Plant Buck Converter"
-      SrcTerminal   1
-      Points        [290, 155]
+      Points        [260, 155; 290, 155]
       Branch {
         DstComponent  "TI Controller Feedback"
         DstTerminal   2
@@ -6546,14 +6465,14 @@ Plecs {
       SrcComponent  "Demux"
       SrcTerminal   3
       DstComponent  "Plant Buck Converter"
-      DstTerminal   3
+      DstTerminal   2
     }
     Connection {
       Type          Signal
       SrcComponent  "Demux"
       SrcTerminal   2
       DstComponent  "Plant Buck Converter"
-      DstTerminal   2
+      DstTerminal   1
     }
   }
 }
