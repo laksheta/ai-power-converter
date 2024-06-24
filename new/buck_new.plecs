@@ -85,9 +85,9 @@ Plecs {
     Index         "1"
   }
   Schematic {
-    Location      [0, 27; 1370, 737]
+    Location      [-1649, 448; 271, 1418]
     ZoomFactor    1.49863
-    SliderPosition [0, 0]
+    SliderPosition [-1, 0]
     ShowBrowser   off
     BrowserWidth  100
     Component {
@@ -140,11 +140,11 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 27; 1370, 756]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAB4AAACV/wCAAAAA/sAAAAQAFoAbwBvA"
+      Location      [0, 27; 1920, 1026]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAB4AAADZfwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAFwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAvAA"
-"AAeQAAAGYA////+wAAAAwAVAByAGEAYwBlAHMBAAAALwAAAlcAAABmAP///wAAAAMAAAVaAAAAY/w"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABVoAAABQAP///wAABN4AAAJXAAAA"
+"AAeQAAAGYA////+wAAAAwAVAByAGEAYwBlAHMBAAAALwAAA2UAAABmAP///wAAAAMAAAeAAAAAY/w"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABQAP///wAABwQAAANlAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAEAAAAYAFMAYQB2AGUAZAAgAHYAaQBlAHcAIAAxAAAAAAAAA"
@@ -152,10 +152,10 @@ Plecs {
 "AAAAAAAAAA"
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
 "QAAAGQAAAACAAAAZAAAAAMAAABkAAAABAAAAGQAAAAFAAAAZAAAAAYAAABkAAAABwAAAGQAAAAIAA"
-"AAZAAAAAkAAABkAAAFWgAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACDAAA"
+"AAZAAAAAkAAABkAAAHgAAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACDAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"ATXAAAAAQAAAAAAAAPoAAAAACQ="
+"Ab9AAAAAQAAAAAAAAPoAAAAACQ="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       Axes          "2"
@@ -939,25 +939,6 @@ Plecs {
       }
     }
     Component {
-      Type          Inductor
-      Name          "ESL"
-      Show          on
-      Position      [390, 230]
-      Direction     down
-      Flipped       off
-      LabelPosition west
-      Parameter {
-        Variable      "L"
-        Value         "5.839164571365709e-08"
-        Show          off
-      }
-      Parameter {
-        Variable      "i_init"
-        Value         "0"
-        Show          off
-      }
-    }
-    Component {
       Type          ConstantRelationalOperator
       Name          "Compare to\nConstant3"
       Show          off
@@ -1017,8 +998,8 @@ Plecs {
           }
         }
         Branch {
-          DstComponent  "ESL"
-          DstTerminal   1
+          DstComponent  "C"
+          DstTerminal   2
         }
       }
       Branch {
@@ -1203,13 +1184,6 @@ Plecs {
       SrcTerminal   2
       DstComponent  "C"
       DstTerminal   1
-    }
-    Connection {
-      Type          Wire
-      SrcComponent  "ESL"
-      SrcTerminal   2
-      DstComponent  "C"
-      DstTerminal   2
     }
     Connection {
       Type          Signal
