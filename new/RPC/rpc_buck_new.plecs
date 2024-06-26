@@ -1,5 +1,5 @@
 Plecs {
-  Name          "buck_new"
+  Name          "rpc_buck_new"
   Version       "4.8"
   CircuitModel  "ContStateSpace"
   StartTime     "0.0"
@@ -96,8 +96,8 @@ Plecs {
     Index         "1"
   }
   Schematic {
-    Location      [0, 23; 1920, 993]
-    ZoomFactor    1.30957
+    Location      [816, 89; 1774, 1049]
+    ZoomFactor    1.14436
     SliderPosition [0, 0]
     ShowBrowser   off
     BrowserWidth  100
@@ -125,7 +125,7 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "L"
-        Value         "0.000030000000000"
+        Value         "varL"
         Show          on
       }
       Parameter {
@@ -147,7 +147,7 @@ Plecs {
       Type          Scope
       Name          "Scope"
       Show          on
-      Position      [600, 165]
+      Position      [600, 160]
       Direction     up
       Flipped       off
       LabelPosition south
@@ -161,18 +161,19 @@ Plecs {
       SavedViews    "AAAAAgAAAAEAAAAYAFMAYQB2AGUAZAAgAHYAaQBlAHcAIAAxAAAAAAAAA"
 "AA/hHrhR64UewAAAAIAf/gAAAAAAAB/+AAAAAAAAAB/+AAAAAAAAH/4AAAAAAAAAAAAAAAAAAAAAA"
 "AAAAAAAAAA"
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAALeAMAAAAGAAAAA"
-"wAAAGQAAAAEAAAAZAAAAAUAAABkAAAABgAAAGQAAAAIAAAAZAAAAAkAAABkAAADrQAAAAsBAAABAA"
-"AAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACDAAAAAQAAAAAAAABkAAAAAQAAAAAAAABkAAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAABk"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAH+AAAAAQAAAAAAAAPoAAAAACQ="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"QAAAGQAAAACAAAAZAAAAAMAAABkAAAABAAAAGQAAAAFAAAAZAAAAAYAAABkAAAABwAAAGQAAAAIAA"
+"AAZAAAAAkAAABkAAADrQAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACDAAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AMqAAAAAQAAAAAAAAPoAAAAACQ="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       Axes          "2"
       TimeRange     "0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "0"
+      Open          "1"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Time / s"
@@ -239,7 +240,7 @@ Plecs {
       LabelPosition east
       Parameter {
         Variable      "Ron"
-        Value         "0.0056"
+        Value         "varRonH"
         Show          off
       }
       Parameter {
@@ -273,7 +274,7 @@ Plecs {
       LabelPosition east
       Parameter {
         Variable      "Ron"
-        Value         "0.0056"
+        Value         "varRonL"
         Show          off
       }
       Parameter {
@@ -321,7 +322,7 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "R"
-        Value         "2.703254400000000"
+        Value         "varDCR"
         Show          off
       }
     }
@@ -335,7 +336,7 @@ Plecs {
       LabelPosition east
       Parameter {
         Variable      "R"
-        Value         "0.045655201341358"
+        Value         "varESR"
         Show          off
       }
     }
@@ -365,7 +366,7 @@ Plecs {
       }
       Parameter {
         Variable      "fc"
-        Value         "20000"
+        Value         "varFsw"
         Show          off
       }
       Parameter {
@@ -417,7 +418,7 @@ Plecs {
         Variable      "td"
         Prompt        "Deadtime (s)"
         Type          FreeText
-        Value         "1.752e-07"
+        Value         "varTd"
         Show          off
         Tunable       off
         TabName       ""
@@ -586,7 +587,7 @@ Plecs {
       Frame         [-25, -10; 25, 10]
       Parameter {
         Variable      "Value"
-        Value         "0.2"
+        Value         "varDutyCycle"
         Show          off
       }
       Parameter {
@@ -603,20 +604,20 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 23; 1366, 700]
+      Location      [0, 27; 1366, 776]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAC0AAAA8PwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAFwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwIAAASOAA"
 "AByAAAAMgAAAB4+wAAAAwAVAByAGEAYwBlAHMAAAAAAAAAAPAAAABmAP///wAAAAMAAAVWAAAAXPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABVYAAABQAP///wAABVYAAAIqAAAA"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAABVYAAABQAP///wAABVYAAAJyAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
 "QAAAGQAAAACAAAAZAAAAAMAAABkAAAABAAAAGQAAAAFAAAAZAAAAAYAAABkAAAABwAAAGQAAAAIAA"
-"AAZAAAAAkAAABkAAAFRQAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAADLAAA"
+"AAZAAAAAkAAABkAAAFRQAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAADYAAA"
 "AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
 "AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
-"AR6AAAAAQAAAAAAAAPoAAAAACQ="
+"ARtAAAAAQAAAAAAAAPoAAAAACQ="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       Axes          "2"
@@ -939,7 +940,7 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "C"
-        Value         "0.000024402139711"
+        Value         "varC"
         Show          on
       }
       Parameter {
@@ -1179,7 +1180,7 @@ Plecs {
       SrcTerminal   3
       Points        [365, 95; 545, 95; 545, 110]
       Branch {
-        Points        [545, 160]
+        Points        [545, 155]
         DstComponent  "Scope"
         DstTerminal   1
       }
