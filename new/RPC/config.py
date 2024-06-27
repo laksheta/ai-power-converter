@@ -29,8 +29,8 @@ d_cycle_range = (0.2, 0.35)
 num_values = 2  # Number of values for each parameter
 
 # Load lookup tables
-inductor_lookup_table = r'E:\ai-power-converter-1\new\dataset\lookup_inductor_new.csv'
-capacitor_lookup_table = r'E:\ai-power-converter-1\new\dataset\lookup_capacitor_new.csv'
+inductor_lookup_table = r'D:\Krishna\ai-power-converter\new\dataset\lookup_inductor_new.csv'
+capacitor_lookup_table = r'D:\Krishna\ai-power-converter\new\dataset\lookup_capacitor_new.csv'
 data_inductor = pd.read_csv(inductor_lookup_table)
 
 
