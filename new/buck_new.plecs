@@ -96,7 +96,7 @@ Plecs {
     Index         "1"
   }
   Schematic {
-    Location      [0, 23; 1920, 993]
+    Location      [234, 480; 2154, 1450]
     ZoomFactor    1.30957
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -111,7 +111,7 @@ Plecs {
       LabelPosition east
       Parameter {
         Variable      "R"
-        Value         "1"
+        Value         "1.44"
         Show          on
       }
     }

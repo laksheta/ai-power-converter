@@ -96,7 +96,7 @@ Plecs {
     Index         "1"
   }
   Schematic {
-    Location      [0, 27; 1920, 997]
+    Location      [0, 92; 1920, 1062]
     ZoomFactor    1.30957
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -111,7 +111,7 @@ Plecs {
       LabelPosition east
       Parameter {
         Variable      "R"
-        Value         "1"
+        Value         "1.44"
         Show          on
       }
     }
@@ -125,7 +125,7 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "L"
-        Value         "9.999999999999999e-05"
+        Value         "0.000940800000000"
         Show          on
       }
       Parameter {
@@ -321,7 +321,7 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "R"
-        Value         "2.7032543999999996"
+        Value         "2.703254400000000"
         Show          off
       }
     }
@@ -335,7 +335,7 @@ Plecs {
       LabelPosition east
       Parameter {
         Variable      "R"
-        Value         "0.002228169203286535"
+        Value         "0.000284119765681"
         Show          off
       }
     }
@@ -365,7 +365,7 @@ Plecs {
       }
       Parameter {
         Variable      "fc"
-        Value         "100000.0"
+        Value         "180000"
         Show          off
       }
       Parameter {
@@ -417,7 +417,7 @@ Plecs {
         Variable      "td"
         Prompt        "Deadtime (s)"
         Type          FreeText
-        Value         "2.2e-07"
+        Value         "2.336e-07"
         Show          off
         Tunable       off
         TabName       ""
@@ -586,7 +586,7 @@ Plecs {
       Frame         [-25, -10; 25, 10]
       Parameter {
         Variable      "Value"
-        Value         "0.3"
+        Value         "0.21666666666666667"
         Show          off
       }
       Parameter {
@@ -939,7 +939,7 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "C"
-        Value         "9.999999999999999e-05"
+        Value         "0.000435686611467"
         Show          on
       }
       Parameter {
