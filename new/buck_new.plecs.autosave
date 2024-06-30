@@ -96,9 +96,15 @@ Plecs {
     Index         "1"
   }
   Schematic {
+<<<<<<< HEAD
     Location      [9, 32; 1911, 984]
     ZoomFactor    1.30957
     SliderPosition [0, 0]
+=======
+    Location      [0, 23; 1920, 993]
+    ZoomFactor    1.96256
+    SliderPosition [0, -1]
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
     ShowBrowser   off
     BrowserWidth  100
     Component {
@@ -119,13 +125,17 @@ Plecs {
       Type          Inductor
       Name          "L1"
       Show          off
-      Position      [275, 120]
+      Position      [240, 120]
       Direction     left
       Flipped       off
       LabelPosition north
       Parameter {
         Variable      "L"
+<<<<<<< HEAD
         Value         "0.0001429"
+=======
+        Value         "0.001997"
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
         Show          on
       }
       Parameter {
@@ -322,8 +332,13 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "R"
+<<<<<<< HEAD
         Value         "11.078349004799996"
         Show          off
+=======
+        Value         "154.8017146368"
+        Show          on
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
       }
     }
     Component {
@@ -336,8 +351,13 @@ Plecs {
       LabelPosition east
       Parameter {
         Variable      "R"
+<<<<<<< HEAD
         Value         "0.000341901059274"
         Show          off
+=======
+        Value         "0.00011140846016432677"
+        Show          on
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
       }
     }
     Component {
@@ -366,7 +386,11 @@ Plecs {
       }
       Parameter {
         Variable      "fc"
+<<<<<<< HEAD
         Value         "140000"
+=======
+        Value         "200000"
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
         Show          off
       }
       Parameter {
@@ -418,7 +442,11 @@ Plecs {
         Variable      "td"
         Prompt        "Deadtime (s)"
         Type          FreeText
+<<<<<<< HEAD
         Value         "2.141e-07"
+=======
+        Value         "2.63e-07"
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
         Show          off
         Tunable       off
         TabName       ""
@@ -587,7 +615,11 @@ Plecs {
       Frame         [-25, -10; 25, 10]
       Parameter {
         Variable      "Value"
+<<<<<<< HEAD
         Value         "0.25"
+=======
+        Value         "0.35"
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
         Show          off
       }
       Parameter {
@@ -940,7 +972,11 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "C"
+<<<<<<< HEAD
         Value         "0.0004655"
+=======
+        Value         "0.001"
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
         Show          on
       }
       Parameter {
