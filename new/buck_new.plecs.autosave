@@ -96,9 +96,15 @@ Plecs {
     Index         "1"
   }
   Schematic {
+<<<<<<< HEAD
     Location      [0, 92; 1920, 1062]
     ZoomFactor    1.30957
     SliderPosition [0, 0]
+=======
+    Location      [-1366, 336; 0, 994]
+    ZoomFactor    1.96256
+    SliderPosition [0, -1]
+>>>>>>> 938af9518550bc4aac649ffb8b7d994d7ffa0484
     ShowBrowser   off
     BrowserWidth  100
     Component {
@@ -125,7 +131,11 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "L"
+<<<<<<< HEAD
         Value         "0.000940800000000"
+=======
+        Value         "0.000100000000000"
+>>>>>>> 938af9518550bc4aac649ffb8b7d994d7ffa0484
         Show          on
       }
       Parameter {
@@ -151,28 +161,28 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [961, 31; 1919, 1011]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAB4AAADUvwCAAAAA/sAAAAQAFoAbwBvA"
+      Location      [0, 23; 1920, 1012]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAB4AAADQfwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAFwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAvAA"
-"AAeQAAAGYA////+wAAAAwAVAByAGEAYwBlAHMBAAAALwAAA1IAAABmAP///wAAAAMAAAO+AAAAY/w"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAA74AAABQAP///wAAA0IAAANSAAAA"
+"AAeQAAAGYA////+wAAAAwAVAByAGEAYwBlAHMBAAAALwAAA0EAAABmAP///wAAAAMAAAeAAAAAffw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABQAP///wAABwQAAANBAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAEAAAAYAFMAYQB2AGUAZAAgAHYAaQBlAHcAIAAxAAAAAAAAA"
 "AA/hHrhR64UewAAAAIAf/gAAAAAAAB/+AAAAAAAAAB/+AAAAAAAAH/4AAAAAAAAAAAAAAAAAAAAAA"
 "AAAAAAAAAA"
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAALeAMAAAAGAAAAA"
-"wAAAGQAAAAEAAAAZAAAAAUAAABkAAAABgAAAGQAAAAIAAAAZAAAAAkAAABkAAADrQAAAAsBAAABAA"
-"AAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACDAAAAAQAAAAAAAABkAAAAAQAAAAAAAABkAAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAABk"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAH+AAAAAQAAAAAAAAPoAAAAACQ="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAALSAIAAAADAAAAB"
+"gAAAGQAAAAJAAAAZAAAAAMAAABkAAAHgAAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAA"
+"AAAAsAAACDAAAAAQAAAAAAAABkAAAAAQAAAAAAAABkAAAAAQAAAAAAAAAAAAAAAQAAAAAAAABkAAA"
+"AAQAAAAAAAABkAAAAAQAAAAAAAAAAAAAAAQAAAAAAAABkAAAAAQAAAAAAAABkAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAASlAAAAAQAAAAAAAAPoAAAAACQ="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       Axes          "2"
       TimeRange     "0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "0"
+      Open          "1"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Time / s"
@@ -322,7 +332,11 @@ Plecs {
       Parameter {
         Variable      "R"
         Value         "2.703254400000000"
+<<<<<<< HEAD
         Show          off
+=======
+        Show          on
+>>>>>>> 938af9518550bc4aac649ffb8b7d994d7ffa0484
       }
     }
     Component {
@@ -335,8 +349,13 @@ Plecs {
       LabelPosition east
       Parameter {
         Variable      "R"
+<<<<<<< HEAD
         Value         "0.000284119765681"
         Show          off
+=======
+        Value         "0.002228169203287"
+        Show          on
+>>>>>>> 938af9518550bc4aac649ffb8b7d994d7ffa0484
       }
     }
     Component {
@@ -939,7 +958,11 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "C"
+<<<<<<< HEAD
         Value         "0.000435686611467"
+=======
+        Value         "0.000100000000000"
+>>>>>>> 938af9518550bc4aac649ffb8b7d994d7ffa0484
         Show          on
       }
       Parameter {
