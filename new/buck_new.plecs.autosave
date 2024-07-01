@@ -96,9 +96,15 @@ Plecs {
     Index         "1"
   }
   Schematic {
+<<<<<<< HEAD
+    Location      [9, 32; 1911, 984]
+    ZoomFactor    1.30957
+    SliderPosition [0, 0]
+=======
     Location      [0, 23; 1920, 993]
     ZoomFactor    1.96256
     SliderPosition [0, -1]
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
     ShowBrowser   off
     BrowserWidth  100
     Component {
@@ -125,7 +131,15 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "L"
+<<<<<<< HEAD
         Value         "7.105e-05"
+=======
+<<<<<<< HEAD
+        Value         "0.0001429"
+=======
+        Value         "0.001997"
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
+>>>>>>> 7c0bd9921e527541d8a06824574add4871c9d305
         Show          on
       }
       Parameter {
@@ -151,21 +165,22 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [0, 23; 1920, 1012]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAB4AAADQfwCAAAAA/sAAAAQAFoAbwBvA"
+      Location      [961, 31; 1919, 1011]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAB4AAADUvwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAFwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAvAA"
-"AAeQAAAGYA////+wAAAAwAVAByAGEAYwBlAHMBAAAALwAAA0EAAABmAP///wAAAAMAAAeAAAAAffw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAB4AAAABQAP///wAABwQAAANBAAAA"
+"AAeQAAAGYA////+wAAAAwAVAByAGEAYwBlAHMBAAAALwAAA1IAAABmAP///wAAAAMAAAO+AAAAY/w"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAA74AAABQAP///wAAA0IAAANSAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAEAAAAYAFMAYQB2AGUAZAAgAHYAaQBlAHcAIAAxAAAAAAAAA"
 "AA/hHrhR64UewAAAAIAf/gAAAAAAAB/+AAAAAAAAAB/+AAAAAAAAH/4AAAAAAAAAAAAAAAAAAAAAA"
 "AAAAAAAAAA"
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAALSAIAAAADAAAAB"
-"gAAAGQAAAAJAAAAZAAAAAMAAABkAAAHgAAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAA"
-"AAAAsAAACDAAAAAQAAAAAAAABkAAAAAQAAAAAAAABkAAAAAQAAAAAAAAAAAAAAAQAAAAAAAABkAAA"
-"AAQAAAAAAAABkAAAAAQAAAAAAAAAAAAAAAQAAAAAAAABkAAAAAQAAAAAAAABkAAAAAQAAAAAAAAAA"
-"AAAAAQAAAAAAAASlAAAAAQAAAAAAAAPoAAAAACQ="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAABAAAAGQAAAAFAAAAZAAAAAgAAABkAAAACQAAAGQAAAACAA"
+"AAZAAAAAMAAABkAAADrQAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACDAAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AMqAAAAAQAAAAAAAAPoAAAAACQ="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       Axes          "2"
@@ -321,8 +336,17 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "R"
+<<<<<<< HEAD
         Value         "2.3029843199999993"
+=======
+<<<<<<< HEAD
+        Value         "11.078349004799996"
+        Show          off
+=======
+        Value         "154.8017146368"
+>>>>>>> 7c0bd9921e527541d8a06824574add4871c9d305
         Show          on
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
       }
     }
     Component {
@@ -335,8 +359,17 @@ Plecs {
       LabelPosition east
       Parameter {
         Variable      "R"
+<<<<<<< HEAD
         Value         "0.0005205516314565309"
+=======
+<<<<<<< HEAD
+        Value         "0.000341901059274"
+        Show          off
+=======
+        Value         "0.00011140846016432677"
+>>>>>>> 7c0bd9921e527541d8a06824574add4871c9d305
         Show          on
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
       }
     }
     Component {
@@ -365,7 +398,15 @@ Plecs {
       }
       Parameter {
         Variable      "fc"
+<<<<<<< HEAD
         Value         "120000"
+=======
+<<<<<<< HEAD
+        Value         "140000"
+=======
+        Value         "200000"
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
+>>>>>>> 7c0bd9921e527541d8a06824574add4871c9d305
         Show          off
       }
       Parameter {
@@ -417,7 +458,15 @@ Plecs {
         Variable      "td"
         Prompt        "Deadtime (s)"
         Type          FreeText
+<<<<<<< HEAD
         Value         "1.849e-07"
+=======
+<<<<<<< HEAD
+        Value         "2.141e-07"
+=======
+        Value         "2.63e-07"
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
+>>>>>>> 7c0bd9921e527541d8a06824574add4871c9d305
         Show          off
         Tunable       off
         TabName       ""
@@ -586,7 +635,15 @@ Plecs {
       Frame         [-25, -10; 25, 10]
       Parameter {
         Variable      "Value"
+<<<<<<< HEAD
         Value         "0.2"
+=======
+<<<<<<< HEAD
+        Value         "0.25"
+=======
+        Value         "0.35"
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
+>>>>>>> 7c0bd9921e527541d8a06824574add4871c9d305
         Show          off
       }
       Parameter {
@@ -939,7 +996,15 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "C"
+<<<<<<< HEAD
         Value         "0.0003567"
+=======
+<<<<<<< HEAD
+        Value         "0.0004655"
+=======
+        Value         "0.001"
+>>>>>>> 04c4f5607d40ea28f7e867310e26975a98fbeb1f
+>>>>>>> 7c0bd9921e527541d8a06824574add4871c9d305
         Show          on
       }
       Parameter {

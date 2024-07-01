@@ -96,7 +96,7 @@ Plecs {
     Index         "1"
   }
   Schematic {
-    Location      [234, 480; 2154, 1450]
+    Location      [0, 92; 1920, 1062]
     ZoomFactor    1.30957
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -125,7 +125,7 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "L"
-        Value         "0.000030000000000"
+        Value         "0.001598700000000"
         Show          on
       }
       Parameter {
@@ -151,28 +151,29 @@ Plecs {
       Direction     up
       Flipped       off
       LabelPosition south
-      Location      [961, 31; 1919, 1011]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAB4AAADUvwCAAAAA/sAAAAQAFoAbwBvA"
+      Location      [961, 31; 1919, 1021]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAB4AAADXPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAFwA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAvAA"
-"AAeQAAAGYA////+wAAAAwAVAByAGEAYwBlAHMBAAAALwAAA1IAAABmAP///wAAAAMAAAO+AAAAY/w"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAA74AAABQAP///wAAA0IAAANSAAAA"
+"AAeQAAAGYA////+wAAAAwAVAByAGEAYwBlAHMBAAAALwAAA1wAAABmAP///wAAAAMAAAO+AAAAY/w"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAA74AAABQAP///wAAA0IAAANcAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAEAAAAYAFMAYQB2AGUAZAAgAHYAaQBlAHcAIAAxAAAAAAAAA"
 "AA/hHrhR64UewAAAAIAf/gAAAAAAAB/+AAAAAAAAAB/+AAAAAAAAH/4AAAAAAAAAAAAAAAAAAAAAA"
 "AAAAAAAAAA"
-      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAALeAMAAAAGAAAAA"
-"wAAAGQAAAAEAAAAZAAAAAUAAABkAAAABgAAAGQAAAAIAAAAZAAAAAkAAABkAAADrQAAAAsBAAABAA"
-"AAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACDAAAAAQAAAAAAAABkAAAAAQAAAAAAAABkAAA"
-"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAABk"
-"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAH+AAAAAQAAAAAAAAPoAAAAACQ="
+      HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL/gMAAAAJAAAAA"
+"QAAAGQAAAAGAAAAZAAAAAcAAABkAAAABAAAAGQAAAAFAAAAZAAAAAgAAABkAAAACQAAAGQAAAACAA"
+"AAZAAAAAMAAABkAAADrQAAAAsBAAABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAsAAACDAAA"
+"AAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA"
+"AAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA"
+"AMqAAAAAQAAAAAAAAPoAAAAACQ="
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
       Axes          "2"
       TimeRange     "0"
       ScrollingMode "1"
       SingleTimeAxis "1"
-      Open          "0"
+      Open          "1"
       Ts            "-1"
       SampleLimit   "0"
       XAxisLabel    "Time / s"
@@ -335,7 +336,7 @@ Plecs {
       LabelPosition east
       Parameter {
         Variable      "R"
-        Value         "0.045655201341358"
+        Value         "0.000344946696743"
         Show          off
       }
     }
@@ -365,7 +366,7 @@ Plecs {
       }
       Parameter {
         Variable      "fc"
-        Value         "20000"
+        Value         "200000"
         Show          off
       }
       Parameter {
@@ -417,7 +418,7 @@ Plecs {
         Variable      "td"
         Prompt        "Deadtime (s)"
         Type          FreeText
-        Value         "1.752e-07"
+        Value         "1.947e-07"
         Show          off
         Tunable       off
         TabName       ""
@@ -586,7 +587,7 @@ Plecs {
       Frame         [-25, -10; 25, 10]
       Parameter {
         Variable      "Value"
-        Value         "0.2"
+        Value         "0.3"
         Show          off
       }
       Parameter {
@@ -939,7 +940,7 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "C"
-        Value         "0.000024402139711"
+        Value         "0.000322972972973"
         Show          on
       }
       Parameter {
