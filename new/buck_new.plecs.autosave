@@ -125,7 +125,7 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "L"
-        Value         "0.001997"
+        Value         "7.105e-05"
         Show          on
       }
       Parameter {
@@ -321,7 +321,7 @@ Plecs {
       LabelPosition north
       Parameter {
         Variable      "R"
-        Value         "154.8017146368"
+        Value         "2.3029843199999993"
         Show          on
       }
     }
@@ -335,7 +335,7 @@ Plecs {
       LabelPosition east
       Parameter {
         Variable      "R"
-        Value         "0.00011140846016432677"
+        Value         "0.0005205516314565309"
         Show          on
       }
     }
@@ -365,7 +365,7 @@ Plecs {
       }
       Parameter {
         Variable      "fc"
-        Value         "200000"
+        Value         "120000"
         Show          off
       }
       Parameter {
@@ -417,7 +417,7 @@ Plecs {
         Variable      "td"
         Prompt        "Deadtime (s)"
         Type          FreeText
-        Value         "2.63e-07"
+        Value         "1.849e-07"
         Show          off
         Tunable       off
         TabName       ""
@@ -586,7 +586,7 @@ Plecs {
       Frame         [-25, -10; 25, 10]
       Parameter {
         Variable      "Value"
-        Value         "0.35"
+        Value         "0.2"
         Show          off
       }
       Parameter {
@@ -939,7 +939,7 @@ Plecs {
       LabelPosition west
       Parameter {
         Variable      "C"
-        Value         "0.001"
+        Value         "0.0003567"
         Show          on
       }
       Parameter {
